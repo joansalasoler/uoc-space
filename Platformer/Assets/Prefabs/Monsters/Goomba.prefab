@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7553838558571191927}
   - component: {fileID: 2674613039340183175}
   - component: {fileID: 5849510571785084434}
-  - component: {fileID: 5444358431382088090}
+  - component: {fileID: 3228088706565165712}
+  - component: {fileID: 6165324983189790878}
   m_Layer: 9
   m_Name: Goomba
   m_TagString: Monster
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674613039340183173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -89.5, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,9 +117,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1598047703
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2580697954514063400, guid: 5d16e534f401ff9bbb9f5b33b16909ec, type: 3}
+  m_Sprite: {fileID: 7010821705414064300, guid: 280b9cd0fc6ca75c6a316c4fbe8f1986, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,8 +151,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &5444358431382088090
-CircleCollider2D:
+--- !u!70 &3228088706565165712
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,10 +160,29 @@ CircleCollider2D:
   m_GameObject: {fileID: 2674613039340183173}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0a12a11e9ec2f69cbb03e0bd293129c9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0318985}
-  serializedVersion: 2
-  m_Radius: 0.4681015
+  m_Offset: {x: -0.000000010530442, y: -0.08833576}
+  m_Size: {x: 1.0180615, y: 0.80707705}
+  m_Direction: 1
+--- !u!95 &6165324983189790878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674613039340183173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84d7fc99b1f737c06bed38df29b3f967, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

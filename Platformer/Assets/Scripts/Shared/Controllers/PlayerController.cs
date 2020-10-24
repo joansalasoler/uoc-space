@@ -59,7 +59,8 @@ namespace Game.Shared {
          */
         private void FixedUpdate() {
             if (isAlive == false && wasKilled == false) {
-                GetComponent<Collider2D>().isTrigger = true;
+                var colliders = GetComponentsInChildren<Collider2D>();
+                Array.ForEach(colliders, c => c.enabled = false);
                 actorRigidbody.AddForce(input.jumpForce * Vector2.up);
                 wasKilled = true;
             }

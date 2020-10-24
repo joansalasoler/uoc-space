@@ -14,9 +14,11 @@ namespace Game.Shared {
         private void OnCollisionEnter2D(Collision2D collision) {
             GameObject target = collision.collider.gameObject;
             ActorController player = target.GetComponent<ActorController>();
+            ScoreController score = target.GetComponent<ScoreController>();
             PowerupController powerup = GetComponent<PowerupController>();
 
             if (player != null && player.isAlive) {
+                score.EarnPoints(100);
                 powerup.Collect();
             }
         }

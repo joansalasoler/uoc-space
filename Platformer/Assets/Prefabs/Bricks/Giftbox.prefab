@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1598047703
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5264979163374914166, guid: 2bb04f73e0d6ced01b68617377bf0201, type: 3}
+  m_Sprite: {fileID: 5937300090042828850, guid: 87ff7583233b8212ebe6271ff7eb661e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 2850062888717284939}
   - component: {fileID: 5447888006689195498}
   m_Layer: 0
-  m_Name: Gift
+  m_Name: Giftbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

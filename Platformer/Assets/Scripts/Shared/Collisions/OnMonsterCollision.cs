@@ -8,6 +8,10 @@ namespace Game.Shared {
      */
     public class OnMonsterCollision: MonoBehaviour {
 
+        /** Push up force when the player kills a monster */
+        public float bounceForce = 1300.0f;
+
+
         /**
          * Invoked when an object collides with this object.
          */
@@ -20,6 +24,8 @@ namespace Game.Shared {
                 if (IsDeadlyForCollider(collision)) {
                     player.Kill();
                 } else {
+                    var body = player.GetComponent<Rigidbody2D>();
+                    body.AddForce(bounceForce * Vector2.up);
                     monster.Kill();
                 }
             }

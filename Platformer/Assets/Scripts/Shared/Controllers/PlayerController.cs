@@ -23,16 +23,13 @@ namespace Game.Shared {
         /** Sprite renderer of the player */
         private SpriteRenderer actorRenderer;
 
-        /** Animator for the player */
-        private Animator actorAnimator;
-
 
         /**
          * Obtain references to the required components when the
          * player is enabled.
          */
-        private void OnEnable() {
-            actorAnimator = GetComponent<Animator>();
+        protected override void OnEnable() {
+            base.OnEnable();
             actorRenderer = GetComponent<SpriteRenderer>();
             actorRigidbody = GetComponent<Rigidbody2D>();
             input = GetComponent<InputController>();
@@ -47,7 +44,6 @@ namespace Game.Shared {
          */
         private void Update() {
             actorRenderer.flipX = input.isFlipped;
-            actorAnimator.SetBool("isAlive", this.isAlive);
             actorAnimator.SetBool("isRunning", input.isRunning);
             actorAnimator.SetBool("isJumping", input.isJumping);
             actorAnimator.SetFloat("moveSpeed", Mathf.Abs(input.velocity.x));

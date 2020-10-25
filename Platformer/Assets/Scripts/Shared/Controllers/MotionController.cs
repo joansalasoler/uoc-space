@@ -37,13 +37,38 @@ namespace Game.Shared {
 
 
         /**
+         * Starts the object movement.
+         */
+        public void StartMoving() {
+            velocity = maxSpeed * direction * Vector2.right;
+            objectRigidbody.velocity = velocity;
+        }
+
+
+        /**
+         * Stops the object movement.
+         */
+        public void StopMoving() {
+            velocity = Vector2.zero;
+            objectRigidbody.velocity = Vector2.zero;
+        }
+
+
+        /**
          * Initialize the movement when enabled.
          */
         private void OnEnable() {
             objectRigidbody = GetComponent<Rigidbody2D>();
             objectRenderer = GetComponent<SpriteRenderer>();
-            velocity = maxSpeed * direction * Vector2.right;
-            objectRigidbody.velocity = velocity;
+            StartMoving();
+        }
+
+
+        /**
+         * Stop the movement when disabled.
+         */
+        private void OnDisable() {
+            StopMoving();
         }
 
 

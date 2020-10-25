@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewards:
   - {fileID: 0}
+  emptySprite: {fileID: 7266596302296298328, guid: 87ff7583233b8212ebe6271ff7eb661e, type: 3}
 --- !u!1 &5575337346492327852
 GameObject:
   m_ObjectHideFlags: 0

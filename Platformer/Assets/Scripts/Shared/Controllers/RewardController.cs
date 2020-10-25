@@ -11,6 +11,9 @@ namespace Game.Shared {
         /** Reward object instances */
         [SerializeField] private List<GameObject> rewards = null;
 
+        /** Sprite to use when the box becomes empty */
+        [SerializeField] private Sprite emptySprite = null;
+
 
         /**
          * Checks if any rewards are left.
@@ -37,6 +40,11 @@ namespace Game.Shared {
                 GameObject reward = rewards[0];
                 reward.SetActive(true);
                 rewards.RemoveAt(0);
+
+                if (IsEmpty() && emptySprite != null) {
+                    var renderer = GetComponentInChildren<SpriteRenderer>();
+                    renderer.sprite = emptySprite;
+                }
             }
         }
     }

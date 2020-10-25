@@ -11,12 +11,24 @@ namespace Game.Shared {
         /** Wether the actor is dead or alive */
         public bool isAlive = true;
 
+        /** Animator for the player */
+        protected Animator actorAnimator;
+
 
         /**
          * Kills this actor.
          */
         public virtual void Kill() {
             isAlive = false;
+            actorAnimator.SetBool("isAlive", false);
+        }
+
+
+        /**
+         * Obtain references to the required components.
+         */
+        protected virtual void OnEnable() {
+            actorAnimator = GetComponent<Animator>();
         }
     }
 }

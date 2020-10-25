@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 
 /**
@@ -29,6 +30,8 @@ public class PauseController : MonoBehaviour {
         Time.timeScale = overlay.activeSelf ? 1.0f : 0.0f;
         AudioListener.pause = (overlay.activeSelf == false);
         overlay.SetActive(overlay.activeSelf == false);
+        EventSystem.current.SetSelectedGameObject(null);
+        overlay.GetComponentInChildren<Button>().Select();
     }
 
 

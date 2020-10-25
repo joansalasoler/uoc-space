@@ -14,12 +14,15 @@ public class GameController : MonoBehaviour {
     /** Game over overlay controller */
     public GameOverController gameover;
 
+    /** Pause overlay controller */
+    public PauseController pause;
+
 
     /**
      * Invoked when the script is started.
      */
     private void Start() {
-        player.playerDied += ShowGameOverScreen;
+        player.playerDied += InvokeGameOver;
         player.playerDied += InvokeMainScene;
     }
 
@@ -43,7 +46,16 @@ public class GameController : MonoBehaviour {
     /**
      * Shows the game over screen after a delay.
      */
+    private void InvokeGameOver() {
+        pause.enabled = false;
+        Invoke("ShowGameOverScreen", 3.0f);
+    }
+
+
+    /**
+     * Loads the main menu after a delay.
+     */
     private void InvokeMainScene() {
-        Invoke("LoadMainScene", 5.0f);
+        Invoke("LoadMainScene", 6.0f);
     }
 }

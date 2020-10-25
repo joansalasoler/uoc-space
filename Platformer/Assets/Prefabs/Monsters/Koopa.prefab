@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3175309022301594915}
   - component: {fileID: 2436013586119238351}
   - component: {fileID: 4657641541158247153}
+  - component: {fileID: 2803932884951361837}
   - component: {fileID: 6311320572564599604}
   m_Layer: 9
   m_Name: Koopa
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceForce: 1300
 --- !u!212 &3175309022301594915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,8 +166,24 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0040934095, y: -0.0021670756}
-  m_Size: {x: 1.0311714, y: 0.9957306}
+  m_Offset: {x: -0.018713389, y: -0.011466472}
+  m_Size: {x: 0.97713906, y: 0.97713906}
+  m_Direction: 1
+--- !u!70 &2803932884951361837
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3175309022301594913}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.27121973, y: -0.3301105}
+  m_Size: {x: 1.0155088, y: 0.3397906}
   m_Direction: 1
 --- !u!95 &6311320572564599604
 Animator:

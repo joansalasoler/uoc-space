@@ -79,7 +79,7 @@ namespace Game.Shared {
          * cleared only on FixedUpdate.
          */
         private void Update() {
-            isFlipped = direction == .0f ? isFlipped : direction < .0f;
+            isFlipped = velocity.x == 0.0f ? isFlipped : velocity.x < .0f;
             objectRenderer.flipX = isFlipped;
         }
 

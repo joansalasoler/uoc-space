@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceForce: 1300
 --- !u!212 &2674613039340183175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,8 +165,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000010530442, y: -0.08833576}
-  m_Size: {x: 1.0180615, y: 0.80707705}
+  m_Offset: {x: 0.0018645123, y: -0.08833576}
+  m_Size: {x: 0.8577214, y: 0.80708086}
   m_Direction: 1
 --- !u!95 &6165324983189790878
 Animator:

@@ -8,6 +8,9 @@ namespace Game.Shared {
      */
     public class OnMonsterCollision: MonoBehaviour {
 
+        /** Last time a force was added after killing a monster */
+        private static float lastForceTime = 0.0f;
+
         /** Push up force when the player kills a monster */
         public float bounceForce = 1300.0f;
 
@@ -24,8 +27,16 @@ namespace Game.Shared {
                 if (IsDeadlyForCollider(collision)) {
                     player.Kill();
                 } else {
-                    var body = player.GetComponent<Rigidbody2D>();
-                    body.AddForce(bounceForce * Vector2.up);
+                    float elapsedTime = Time.fixedTime - lastForceTime;
+
+                    if (elapsedTime > 0.2) {
+                        var body = player.GetComponent<Rigidbody2D>();
+                        body.AddForce(bounceForce * Vector2.up);
+                        lastForceTime = Time.fixedTime;
+                    } else if (elapsedTime < 0.5) {
+                        Debug.Log("Extra reward!");
+                    }
+
                     monster.Kill();
                 }
             }
@@ -36,10 +47,10 @@ namespace Game.Shared {
          *
          */
         private bool IsDeadlyForCollider(Collision2D collision) {
-            ContactPoint2D contact = collision.GetContact(0);
-            Vector2 center = collision.collider.bounds.center;
+            Vector2 monsterCenter = collision.collider.bounds.center;
+            Vector2 playerCenter = collision.otherCollider.bounds.center;
 
-            return center.y - contact.point.y < .15f;
+            return monsterCenter.y - playerCenter.y < .5f;
         }
     }
 }

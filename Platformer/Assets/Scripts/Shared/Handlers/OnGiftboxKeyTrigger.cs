@@ -4,15 +4,12 @@ using System;
 namespace Game.Shared {
 
     /**
-     * Delegates collisions for a reward trigger.
+     * Delegates collisions for a reward key trigger.
      */
-    public class RewardDelegator : MonoBehaviour {
+    public class OnGiftboxKeyTrigger : MonoBehaviour {
 
         /** Reward collision delegate */
-        public Action rewardCollision;
-
-        /** Target collider for the reward */
-        public Collider2D targetCollider = null;
+        public Action<Collider2D> giftboxKeyTriggerEnter;
 
 
         /**
@@ -20,8 +17,8 @@ namespace Game.Shared {
          * collider matches with the target collider.
          */
         private void OnTriggerEnter2D(Collider2D collider) {
-            if (collider == targetCollider) {
-                rewardCollision.Invoke();
+            if (collider.gameObject.CompareTag("Player")) {
+                giftboxKeyTriggerEnter.Invoke(collider);
             }
         }
     }

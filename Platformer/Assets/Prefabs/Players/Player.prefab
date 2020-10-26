@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3860911725121537784}
   - component: {fileID: 3860911725121537785}
   - component: {fileID: 3860911725121537787}
-  - component: {fileID: 7702465615501418976}
   - component: {fileID: 3860911725121537783}
   - component: {fileID: 3860911725121537782}
   - component: {fileID: 3860911725121537781}
@@ -50,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
+  wallet: {fileID: 11400000, guid: 1fbef99627d1dc9aeb80bd318bb7a20e, type: 2}
 --- !u!114 &3860911725121537787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,19 +73,6 @@ MonoBehaviour:
   isRunning: 0
   isGrounded: 0
   isFlipped: 0
---- !u!114 &7702465615501418976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3860911725121537780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991299727dd8527f29b4c450750aa31f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points: 0
 --- !u!212 &3860911725121537783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +111,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -290044337
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -620360788158790383, guid: 958dd06cc7c9465bb945caf8d24a2bf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,7 +121,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &3860911725121537782

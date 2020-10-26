@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Game.Shared;
+using Game.Shared.Timers;
 
 
 /**
@@ -11,51 +12,90 @@ public class GameController : MonoBehaviour {
     /** Player instance */
     public PlayerController player;
 
-    /** Game over overlay controller */
-    public GameOverController gameover;
-
     /** Pause overlay controller */
     public PauseController pause;
 
+    /** Game over overlay controller */
+    public EndgameController endgame;
+
 
     /**
-     * Invoked when the script is started.
+     * Attach the events.
      */
-    private void Start() {
-        player.playerDied += InvokeGameOver;
-        player.playerDied += InvokeMainScene;
+    private void OnEnable() {
+        player.playerWon += OnPlayerWon;
+        player.playerDied += OnPlayerDied;
+    }
+
+
+    /**
+     * Detach the events.
+     */
+    private void OnDisable() {
+        player.playerWon -= OnPlayerWon;
+        player.playerDied -= OnPlayerDied;
     }
 
 
     /**
      * Loads the main menu scene.
      */
-    private void LoadMainScene() {
+    public void LoadMainScene() {
         SceneManager.LoadScene("Main");
     }
 
 
     /**
-     * Toggles the game over screen.
+     * Shows the congratulations overlay.
      */
-    private void ShowGameOverScreen() {
-        gameover.ToggleOverlay();
+    public void ShowCongratsOverlay() {
+        endgame.ShowCongratsOverlay();
     }
 
 
     /**
-     * Shows the game over screen after a delay.
+     * Shows the game over overlay.
      */
-    private void InvokeGameOver() {
+    public void ShowGameOverOverlay() {
+        endgame.ShowGameOverOverlay();
+    }
+
+
+    /**
+     * Shows the time up overlay.
+     */
+    public void ShowTimeUpOverlay() {
+        endgame.ShowTimeUpOverlay();
+    }
+
+
+    /**
+     * Transitions to the game over state.
+     */
+    public void OnPlayerDied() {
         pause.enabled = false;
-        Invoke("ShowGameOverScreen", 3.0f);
+        Invoke("ShowGameOverOverlay", 3.0f);
+        Invoke("LoadMainScene", 6.0f);
     }
 
 
     /**
-     * Loads the main menu after a delay.
+     * Transitions to the player wins state.
      */
-    private void InvokeMainScene() {
+    public void OnPlayerWon() {
+        ShowCongratsOverlay();
+        Invoke("LoadMainScene", 6.0f);
+    }
+
+
+    /**
+     * Transitions to the player wins state.
+     */
+    public void OnTimeUp() {
+        player.Kill();
+        pause.enabled = false;
+        ShowTimeUpOverlay();
+        Invoke("ShowGameOverOverlay", 3.0f);
         Invoke("LoadMainScene", 6.0f);
     }
 }

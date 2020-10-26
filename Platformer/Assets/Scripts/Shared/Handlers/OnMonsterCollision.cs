@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Game.Shared {
 
     /**
-     *
+     * Handles the collision of players with the monsters.
      */
-    public class OnMonsterCollision: MonoBehaviour {
+    public class OnMonsterCollision: OnRewardCollision {
 
         /** Last time a force was added after killing a monster */
         private static float lastForceTime = 0.0f;
@@ -16,17 +16,19 @@ namespace Game.Shared {
 
 
         /**
-         * Invoked when an object collides with this object.
+         * Invoked when an object collides with this object. It kills the
+         * player or the monster according to the collision point.
          */
-        private void OnCollisionEnter2D(Collision2D collision) {
+        protected override void OnCollisionEnter2D(Collision2D collision) {
             GameObject target = collision.collider.gameObject;
             PlayerController player = target.GetComponent<PlayerController>();
             MonsterController monster = GetComponent<MonsterController>();
 
             if (player != null && player.isAlive && monster.isAlive) {
-                if (IsDeadlyForCollider(collision)) {
+                if (IsDeadlyForPlayer(collision)) {
                     player.Kill();
                 } else {
+                    int points = earnedPoints;
                     float elapsedTime = Time.fixedTime - lastForceTime;
 
                     if (elapsedTime > 0.2) {
@@ -34,9 +36,12 @@ namespace Game.Shared {
                         body.AddForce(bounceForce * Vector2.up);
                         lastForceTime = Time.fixedTime;
                     } else if (elapsedTime < 0.5) {
-                        Debug.Log("Extra reward!");
+                        RewardColliderPlayer(collision.collider);
+                        points += earnedPoints;
                     }
 
+                    RewardColliderPlayer(collision.collider);
+                    EmitEarnedPoints(points, collision.GetContact(0).point);
                     monster.Kill();
                 }
             }
@@ -44,9 +49,9 @@ namespace Game.Shared {
 
 
         /**
-         *
+         * Checks if the collision must kill the player.
          */
-        private bool IsDeadlyForCollider(Collision2D collision) {
+        private bool IsDeadlyForPlayer(Collision2D collision) {
             Vector2 monsterCenter = collision.collider.bounds.center;
             Vector2 playerCenter = collision.otherCollider.bounds.center;
 

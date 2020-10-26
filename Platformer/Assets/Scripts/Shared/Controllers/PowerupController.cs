@@ -19,7 +19,6 @@ namespace Game.Shared {
             if (wasCollected == false) {
                 wasCollected = true;
                 gameObject.SetActive(false);
-                Debug.Log("Collected: " + gameObject.name);
             }
         }
     }

@@ -11,8 +11,17 @@ namespace Game.Shared {
         /** Invoked when the player dies */
         public Action playerDied;
 
+        /** Invoked when the player wins */
+        public Action playerWon;
+
+        /** Stores the inventory of this player */
+        public PlayerWallet wallet = null;
+
         /** Set to true when the player is not alive */
         private bool wasKilled = false;
+
+        /** Set to true when the player has won */
+        private bool hasWon = false;
 
         /** Input events controlller */
         private InputController input;
@@ -59,6 +68,17 @@ namespace Game.Shared {
                 Array.ForEach(colliders, c => c.enabled = false);
                 actorRigidbody.AddForce(input.jumpForce * Vector2.up);
                 wasKilled = true;
+            }
+        }
+
+
+        /**
+         * Declare this player as a winner.
+         */
+        public void DeclareWinner() {
+            if (hasWon == false) {
+                playerWon.Invoke();
+                hasWon = true;
             }
         }
 

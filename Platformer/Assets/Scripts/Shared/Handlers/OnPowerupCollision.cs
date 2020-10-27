@@ -15,7 +15,7 @@ namespace Game.Shared {
             if (IsAliveColliderActor(collision.collider)) {
                 RewardColliderPlayer(collision.collider);
                 EmitEarnedPoints(earnedPoints, collision.GetContact(0).point);
-                CollectPowerup();
+                CollectPowerup(collision.collider);
             }
         }
 
@@ -24,7 +24,7 @@ namespace Game.Shared {
          * Collects the power-up if a power up controller is attached
          * to the object. Otherwise, does nothing.
          */
-        protected void CollectPowerup() {
+        protected virtual void CollectPowerup(Collider2D collider) {
             PowerupController powerup = GetComponent<PowerupController>();
             if (powerup != null) powerup.Collect();
         }

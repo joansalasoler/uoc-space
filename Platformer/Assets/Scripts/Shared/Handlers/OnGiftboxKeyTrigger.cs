@@ -11,6 +11,12 @@ namespace Game.Shared {
         /** Reward collision delegate */
         public Action<Collider2D> giftboxKeyTriggerEnter;
 
+        /** Minimus time between trigger invocations */
+        private float invokeDelay = 0.5f;
+
+        /** Last time the trigger was invoked */
+        private float timeStamp = 0.0f;
+
 
         /**
          * On a trigger collision invokes the reward delegate if the
@@ -18,7 +24,10 @@ namespace Game.Shared {
          */
         private void OnTriggerEnter2D(Collider2D collider) {
             if (collider.gameObject.CompareTag("Player")) {
-                giftboxKeyTriggerEnter.Invoke(collider);
+                if (Time.time - timeStamp > invokeDelay) {
+                    giftboxKeyTriggerEnter.Invoke(collider);
+                    timeStamp = Time.time;
+                }
             }
         }
     }

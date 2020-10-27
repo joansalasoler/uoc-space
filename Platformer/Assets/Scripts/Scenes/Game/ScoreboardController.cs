@@ -70,5 +70,6 @@ public class ScoreboardController : MonoBehaviour {
         GameObject dust = Instantiate(pointsTemplate);
         dust.transform.position = position;
         dust.SetActive(true);
+        Destroy(dust, 1.0f);
     }
 }

@@ -21,7 +21,7 @@ namespace Game.Shared {
         public float minSideAngle = 70.0f;
 
         /** Wether the object is looking to the left */
-        private bool isFlipped = false;
+        public bool isFlipped = false;
 
         /** Adds an impulse force to the object */
         public Vector2 impulse = Vector2.zero;

@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
+  damageForce: 600
 --- !u!114 &3667870551242193885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +67,7 @@ MonoBehaviour:
   minSpeed: 0.5
   direction: -1
   minSideAngle: 70
+  isFlipped: 0
   impulse: {x: 0, y: 0}
 --- !u!114 &7553838558571191927
 MonoBehaviour:
@@ -79,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earnedPoints: 100
+  earnedCoins: 0
   bounceForce: 1300
 --- !u!212 &2674613039340183175
 SpriteRenderer:

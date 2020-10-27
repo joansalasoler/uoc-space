@@ -17,6 +17,8 @@ namespace Game.Shared {
 
             if (actor != null && actor.isAlive) {
                 actor.Kill();
+            } else {
+                Destroy(target);
             }
         }
     }

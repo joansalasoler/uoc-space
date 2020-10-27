@@ -20,13 +20,17 @@ namespace Game.Shared {
          * player or the monster according to the collision point.
          */
         protected override void OnCollisionEnter2D(Collision2D collision) {
-            GameObject target = collision.collider.gameObject;
-            PlayerController player = target.GetComponent<PlayerController>();
+            PlayerController player = GetColliderPlayer(collision.collider);
             MonsterController monster = GetComponent<MonsterController>();
 
             if (player != null && player.isAlive && monster.isAlive) {
-                if (IsDeadlyForPlayer(collision)) {
-                    player.Kill();
+                if (player.starActive) {
+                    int points = 2 * earnedPoints;
+                    RewardColliderPlayer(collision.collider);
+                    EmitEarnedPoints(points, collision.GetContact(0).point);
+                    monster.Damage();
+                } else if (IsDeadlyForPlayer(collision)) {
+                    player.Damage();
                 } else {
                     int points = earnedPoints;
                     float elapsedTime = Time.fixedTime - lastForceTime;

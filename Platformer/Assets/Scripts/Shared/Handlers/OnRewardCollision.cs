@@ -53,13 +53,20 @@ namespace Game.Shared {
          * adds the reward points and coins to it.
          */
         protected void RewardColliderPlayer(Collider2D collider) {
-            GameObject o = collider.gameObject;
-            PlayerController player = o.GetComponent<PlayerController>();
+            PlayerController player = GetColliderPlayer(collider);
 
             if (player is PlayerController && player.wallet != null) {
                 if (earnedCoins > 0) player.wallet.StoreCoins(earnedCoins);
                 if (earnedPoints > 0) player.wallet.StorePoints(earnedPoints);
             }
+        }
+
+
+        /**
+         * Obtain the player controller component of the collider.
+         */
+        protected PlayerController GetColliderPlayer(Collider2D collider) {
+            return collider.gameObject.GetComponent<PlayerController>();
         }
     }
 }

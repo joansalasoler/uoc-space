@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour {
      * Transitions to the player wins state.
      */
     public void OnTimeUp() {
-        player.Kill();
+        player.Damage();
         pause.enabled = false;
         ShowTimeUpOverlay();
         Invoke("ShowGameOverOverlay", 3.0f);

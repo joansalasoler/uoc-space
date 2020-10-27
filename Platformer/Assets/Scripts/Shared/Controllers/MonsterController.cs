@@ -8,27 +8,60 @@ namespace Game.Shared {
      */
     public class MonsterController : ActorController {
 
+        /** Magintude of the force applied when damaged */
+        public float damageForce = 600.0f;
+
         /** Motion controller for the monster */
         protected MotionController motionController;
+
+
+        /**
+         * Obtain references to the required components.
+         */
+        protected override void OnEnable() {
+            base.OnEnable();
+            motionController = GetComponent<MotionController>();
+        }
+
+
+        /**
+         * {inheritDoc}
+         */
+        public override void Damage() {
+            if (isAlive == true) {
+                isAlive = false;
+                DisableMotion();
+                DisableColliders();
+                AddDamageForce();
+            }
+        }
 
 
         /**
          * {inheritDoc}
          */
         public override void Kill() {
-            motionController.enabled = false;
-            motionController.StopMoving();
+            DisableMotion();
             base.Kill();
         }
 
 
         /**
-         * Obtain references to the required components when the
-         * player is enabled.
+         * Stop the monster and disable its movement.
          */
-        protected override void OnEnable() {
-            base.OnEnable();
-            motionController = GetComponent<MotionController>();
+        private void DisableMotion() {
+            motionController.enabled = false;
+            motionController.StopMoving();
+        }
+
+
+        /**
+         * Adds a force to the monster when it is damaged.
+         */
+        private void AddDamageForce() {
+            float direction = .5f * motionController.direction;
+            Vector2 force = new Vector2(direction, 1.0f);
+            actorRigidbody.AddForce(damageForce * force);
         }
 
 

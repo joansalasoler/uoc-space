@@ -18,11 +18,17 @@ namespace Game.Shared {
         /** Stores the inventory of this player */
         public PlayerWallet wallet = null;
 
+        /** Shield of the player*/
+        public GameObject shield = null;
+
+        /** Star shield of the player*/
+        public GameObject superShield = null;
+
         /** Star power-up duration in seconds */
         public float starTimeout = 20.0f;
 
         /** Shield power-up duration in seconds */
-        public float shieldTimeout = 5.0f;
+        public float shieldTimeout = 3.0f;
 
         /** Wheter the star power-up is active */
         public bool starActive = false;
@@ -35,6 +41,9 @@ namespace Game.Shared {
 
         /** Wheter the shield power-up is active */
         public bool shieldActive = false;
+
+        /** Set to true when the player is hurt */
+        private bool isHurt = false;
 
         /** Set to true when the player is not alive */
         private bool wasKilled = false;
@@ -71,6 +80,7 @@ namespace Game.Shared {
             actorAnimator.SetBool("isRunning", input.isRunning);
             actorAnimator.SetBool("isJumping", input.isJumping);
             actorAnimator.SetFloat("moveSpeed", Mathf.Abs(input.velocity.x));
+            actorAnimator.SetBool("isHurt", isHurt);
         }
 
 
@@ -99,6 +109,7 @@ namespace Game.Shared {
          */
         public void ActivateMushroomPowers() {
             mushroomActive = true;
+            StartCoroutine("ActivateMushroomCoroutine");
         }
 
 
@@ -106,7 +117,6 @@ namespace Game.Shared {
          * Activates the shield power-up.
          */
         public void ActivateShieldPowers() {
-            StopCoroutine("ActivateShieldCoroutine");
             StartCoroutine("ActivateShieldCoroutine");
         }
 
@@ -115,7 +125,6 @@ namespace Game.Shared {
          * Activates the star power-up.
          */
         public void ActivateStarPowers() {
-            StopCoroutine("ActivateStarCoroutine");
             StartCoroutine("ActivateStarCoroutine");
         }
 
@@ -128,6 +137,7 @@ namespace Game.Shared {
             flowerActive = false;
             mushroomActive = false;
             shieldActive = false;
+            StartCoroutine("DeactivateMushroomCoroutine");
         }
 
 
@@ -164,7 +174,9 @@ namespace Game.Shared {
          */
         public IEnumerator ActivateStarCoroutine() {
             starActive = true;
+            superShield.SetActive(true);
             yield return new WaitForSeconds(starTimeout);
+            superShield.SetActive(false);
             starActive = false;
          }
 
@@ -173,9 +185,46 @@ namespace Game.Shared {
          * Activate the shield for the defined timeout.
          */
         public IEnumerator ActivateShieldCoroutine() {
+            isHurt = true;
             shieldActive = true;
+
+            actorRigidbody.AddForce(600.0f * Vector2.up);
+            yield return new WaitForSeconds(0.1f);
+
+            isHurt = false;
+            yield return new WaitForSeconds(0.5f);
+
+            shield.SetActive(true);
             yield return new WaitForSeconds(shieldTimeout);
+
+            shield.SetActive(false);
             shieldActive = false;
          }
+
+
+         /**
+          * Scale the player when a mushroom is activated.
+          */
+        public IEnumerator ActivateMushroomCoroutine() {
+            float currentScale = transform.localScale.y;
+
+            for (float scale = currentScale; scale <= 1.5f; scale += 0.05f) {
+                transform.localScale = new Vector3(scale, scale, scale);
+                yield return new WaitForSeconds(0.025f);
+            }
+        }
+
+
+         /**
+          * Scale the player when a mushroom is deactivated.
+          */
+        public IEnumerator DeactivateMushroomCoroutine() {
+            float currentScale = transform.localScale.y;
+
+            for (float scale = currentScale; scale >= 1.0f; scale -= 0.05f) {
+                transform.localScale = new Vector3(scale, scale, scale);
+                yield return new WaitForSeconds(0.025f);
+            }
+        }
     }
 }

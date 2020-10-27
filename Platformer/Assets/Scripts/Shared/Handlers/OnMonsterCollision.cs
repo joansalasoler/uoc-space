@@ -24,7 +24,9 @@ namespace Game.Shared {
             MonsterController monster = GetComponent<MonsterController>();
 
             if (player != null && player.isAlive && monster.isAlive) {
-                if (player.starActive) {
+                if (player.shieldActive) {
+                    return;
+                } else if (player.starActive) {
                     int points = 2 * earnedPoints;
                     RewardColliderPlayer(collision.collider);
                     EmitEarnedPoints(points, collision.GetContact(0).point);

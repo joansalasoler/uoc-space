@@ -56,7 +56,7 @@ MonoBehaviour:
   shield: {fileID: 8442050237089401069}
   superShield: {fileID: 137976159941623447}
   starTimeout: 20
-  shieldTimeout: 3
+  shieldTimeout: 5
   starActive: 0
   flowerActive: 0
   mushroomActive: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
+  fireball: {fileID: 4780597797745941279, guid: 16387bcd04c507b38962529da504b0f0, type: 3}
   groundSpeed: 450
   airSpeed: 250
   runFactor: 2

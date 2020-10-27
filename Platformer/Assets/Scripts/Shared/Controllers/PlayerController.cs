@@ -28,7 +28,7 @@ namespace Game.Shared {
         public float starTimeout = 20.0f;
 
         /** Shield power-up duration in seconds */
-        public float shieldTimeout = 3.0f;
+        public float shieldTimeout = 5.0f;
 
         /** Wheter the star power-up is active */
         public bool starActive = false;
@@ -101,6 +101,7 @@ namespace Game.Shared {
          */
         public void ActivateFlowerPowers() {
             flowerActive = true;
+            input.fireEnabled = true;
         }
 
 
@@ -137,6 +138,7 @@ namespace Game.Shared {
             flowerActive = false;
             mushroomActive = false;
             shieldActive = false;
+            input.fireEnabled = false;
             StartCoroutine("DeactivateMushroomCoroutine");
         }
 
@@ -192,8 +194,6 @@ namespace Game.Shared {
             yield return new WaitForSeconds(0.1f);
 
             isHurt = false;
-            yield return new WaitForSeconds(0.5f);
-
             shield.SetActive(true);
             yield return new WaitForSeconds(shieldTimeout);
 
@@ -208,7 +208,7 @@ namespace Game.Shared {
         public IEnumerator ActivateMushroomCoroutine() {
             float currentScale = transform.localScale.y;
 
-            for (float scale = currentScale; scale <= 1.5f; scale += 0.05f) {
+            for (float scale = currentScale; scale <= 1.4f; scale += 0.05f) {
                 transform.localScale = new Vector3(scale, scale, scale);
                 yield return new WaitForSeconds(0.025f);
             }

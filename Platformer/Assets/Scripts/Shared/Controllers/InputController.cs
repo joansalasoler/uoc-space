@@ -11,6 +11,9 @@ namespace Game.Shared {
         /** Target velocity of the player */
         [HideInInspector] public Vector2 velocity;
 
+        /** Fireball template object */
+        [SerializeField] private GameObject fireball;
+
         /** Maximum horizontal speed on the ground */
         public float groundSpeed = 450.0f;
 
@@ -28,6 +31,9 @@ namespace Game.Shared {
 
         /** Target horizontal move direction */
         public float direction;
+
+        /** If fireballs are enabled */
+        public bool fireEnabled = false;
 
         /** Wether the player is currently jumping */
         public bool isJumping = false;
@@ -87,6 +93,10 @@ namespace Game.Shared {
             isFlipped = direction == .0f ? isFlipped : direction < .0f;
             isJumpRequested |= Input.GetButtonDown("Jump");
             isJumpCanceled |= Input.GetButtonUp("Jump");
+
+            if (fireEnabled && Input.GetButtonUp("Fire2")) {
+                ThrowFireball();
+            }
         }
 
 
@@ -117,6 +127,20 @@ namespace Game.Shared {
             actorRigidbody.velocity = velocity;
             isJumpRequested = false;
             isJumpCanceled = false;
+        }
+
+
+        /**
+         * Throws a fireball from the player's position.
+         */
+        public void ThrowFireball() {
+            GameObject ball = Instantiate(fireball);
+            Rigidbody2D body = ball.GetComponent<Rigidbody2D>();
+            Destroy(ball, 2.5f);
+
+            ball.transform.position = actorRigidbody.transform.position;
+            body.AddForce((isFlipped ? -60.0f : 60.0f) * transform.right);
+            body.AddTorque(500.0f);
         }
 
 

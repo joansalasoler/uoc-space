@@ -50,8 +50,10 @@ namespace Game.Shared {
          * Stop the monster and disable its movement.
          */
         private void DisableMotion() {
-            motionController.enabled = false;
-            motionController.StopMoving();
+            if (motionController.enabled) {
+                motionController.enabled = false;
+                motionController.StopMoving();
+            }
         }
 
 

@@ -63,6 +63,14 @@ namespace Game.Shared {
 
 
         /**
+         * Obtain the actor controller component of the collider.
+         */
+        protected ActorController GetColliderActor(Collider2D collider) {
+            return collider.gameObject.GetComponent<ActorController>();
+        }
+
+
+        /**
          * Obtain the player controller component of the collider.
          */
         protected PlayerController GetColliderPlayer(Collider2D collider) {

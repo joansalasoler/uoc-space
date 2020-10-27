@@ -163,11 +163,19 @@ namespace Game.Shared {
                     DeactivateAllPowers();
                     ActivateShieldPowers();
                 } else {
-                    base.Damage();
-                    input.enabled = false;
-                    playerDied.Invoke();
+                    Kill();
                 }
             }
+        }
+
+
+        /**
+         * {inheritDoc}
+         */
+        public override void Kill() {
+            base.Kill();
+            input.enabled = false;
+            playerDied.Invoke();
         }
 
 

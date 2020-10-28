@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
+  monsterType: Koopa
   damageForce: 600
 --- !u!114 &6090851534535644150
 MonoBehaviour:

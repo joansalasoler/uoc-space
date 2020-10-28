@@ -8,6 +8,9 @@ namespace Game.Shared {
      */
     public class MonsterController : ActorController {
 
+        /** Identifier for the type of monster */
+        public string monsterType = "monster";
+
         /** Magintude of the force applied when damaged */
         public float damageForce = 600.0f;
 

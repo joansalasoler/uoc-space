@@ -79,6 +79,7 @@ namespace Game.Shared {
          * cleared only on FixedUpdate.
          */
         private void Update() {
+            Vector2 velocity = objectRigidbody.velocity;
             isFlipped = velocity.x == 0.0f ? isFlipped : velocity.x < .0f;
             objectRenderer.flipX = isFlipped;
         }

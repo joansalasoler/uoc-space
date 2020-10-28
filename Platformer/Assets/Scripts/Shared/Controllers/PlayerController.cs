@@ -28,10 +28,10 @@ namespace Game.Shared {
         public bool hasWon = false;
 
         /** Star power-up duration in seconds */
-        public float starTimeout = 20.0f;
+        public float starTimeout = 10.0f;
 
         /** Shield power-up duration in seconds */
-        public float shieldTimeout = 5.0f;
+        public float shieldTimeout = 2.5f;
 
         /** Wheter the star power-up is active */
         public bool starActive = false;
@@ -184,7 +184,7 @@ namespace Game.Shared {
         /**
          * Activate the shield for the defined timeout.
          */
-        public IEnumerator ActivateStarCoroutine() {
+        private IEnumerator ActivateStarCoroutine() {
             starActive = true;
             superShield.SetActive(true);
             yield return new WaitForSeconds(starTimeout);
@@ -195,17 +195,22 @@ namespace Game.Shared {
 
         /**
          * Activate the shield for the defined timeout.
+         *
+         * This coroutine makes the player jump back, activates the shield
+         * and temporarily disables the player collisions with monsters.
          */
-        public IEnumerator ActivateShieldCoroutine() {
+        private IEnumerator ActivateShieldCoroutine() {
             isHurt = true;
             shieldActive = true;
 
+            SetIgnoreMonsterCollisions(true);
             actorRigidbody.AddForce(600.0f * Vector2.up);
             yield return new WaitForSeconds(0.1f);
 
             isHurt = false;
             shield.SetActive(true);
             yield return new WaitForSeconds(shieldTimeout);
+            SetIgnoreMonsterCollisions(false);
 
             shield.SetActive(false);
             shieldActive = false;
@@ -215,7 +220,7 @@ namespace Game.Shared {
          /**
           * Scale the player when a mushroom is activated.
           */
-        public IEnumerator ActivateMushroomCoroutine() {
+        private IEnumerator ActivateMushroomCoroutine() {
             float currentScale = transform.localScale.y;
 
             for (float scale = currentScale; scale <= 1.4f; scale += 0.05f) {
@@ -228,13 +233,23 @@ namespace Game.Shared {
          /**
           * Scale the player when a mushroom is deactivated.
           */
-        public IEnumerator DeactivateMushroomCoroutine() {
+        private IEnumerator DeactivateMushroomCoroutine() {
             float currentScale = transform.localScale.y;
 
             for (float scale = currentScale; scale >= 1.0f; scale -= 0.05f) {
                 transform.localScale = new Vector3(scale, scale, scale);
                 yield return new WaitForSeconds(0.025f);
             }
+        }
+
+
+        /**
+         * Ignore player collisions with the monsters
+         */
+        private void SetIgnoreMonsterCollisions(bool ignore) {
+            int players = LayerMask.NameToLayer("Player");
+            int monsters = LayerMask.NameToLayer("Monster");
+            Physics2D.IgnoreLayerCollision(players, monsters, ignore);
         }
     }
 }

@@ -15,7 +15,11 @@ namespace Game.Shared {
             if (collider.gameObject.CompareTag("Player")) {
                 GameObject target = collider.gameObject;
                 var player = target.GetComponent<PlayerController>();
-                player.DeclareWinner();
+
+                if (player != null && !player.hasWon) {
+                    AudioService.PlayOneShot(gameObject, "Player Win");
+                    player.DeclareWinner();
+                }
             }
         }
     }

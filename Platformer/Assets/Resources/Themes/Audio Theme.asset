@@ -32,7 +32,7 @@ MonoBehaviour:
   - name: Player Fire
     clip: {fileID: 8300000, guid: 43b2abab3b3f50718a8631b751c49191, type: 3}
   - name: Player Win
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9bf0ddb025a1fb90cba6bf088ed45b09, type: 3}
   - name: Monster Die
     clip: {fileID: 8300000, guid: a1f34454c1d0de5828c5564071468d5e, type: 3}
   - name: Activate Extralife
@@ -57,3 +57,5 @@ MonoBehaviour:
     clip: {fileID: 0}
   - name: Monster Hurt
     clip: {fileID: 8300000, guid: ad75e36589661ef38a0198de9a0efca4, type: 3}
+  - name: Player Land
+    clip: {fileID: 8300000, guid: 54ffd61393c0efb84ad7df8088e3ebfa, type: 3}

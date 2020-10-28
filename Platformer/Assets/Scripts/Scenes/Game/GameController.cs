@@ -85,7 +85,6 @@ public class GameController : MonoBehaviour {
     public void OnPlayerWon() {
         ShowCongratsOverlay();
         Invoke("LoadMainScene", 6.0f);
-        AudioService.PlayOneShot(gameObject, "Player Win");
     }
 
 

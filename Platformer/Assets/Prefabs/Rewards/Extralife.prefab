@@ -10,20 +10,21 @@ GameObject:
   m_Component:
   - component: {fileID: 5725477128224212145}
   - component: {fileID: 1908172597930274141}
+  - component: {fileID: 6551846014847107475}
   - component: {fileID: 292282161130233323}
   - component: {fileID: 8557049953495346155}
   - component: {fileID: 5725477128224212144}
   - component: {fileID: 1822596092710352875}
   - component: {fileID: 5233496415144942518}
   - component: {fileID: 5299172157040917715}
-  - component: {fileID: 3294932199433408905}
+  - component: {fileID: 4238622026105981310}
   m_Layer: 11
   m_Name: Extralife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5725477128224212145
 Transform:
   m_ObjectHideFlags: 0
@@ -51,6 +52,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasCollected: 0
+--- !u!114 &6551846014847107475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725477128224212147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f310f5d88183914489193f6ce027331c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &292282161130233323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +94,7 @@ MonoBehaviour:
   minSpeed: 5
   direction: 1
   minSideAngle: 70
+  isFlipped: 0
   impulse: {x: 1, y: 10}
 --- !u!212 &5725477128224212144
 SpriteRenderer:
@@ -189,7 +203,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &3294932199433408905
+--- !u!82 &4238622026105981310
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,8 +213,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7cda3eeee50ac9361bb3eb4deb0cfa11, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

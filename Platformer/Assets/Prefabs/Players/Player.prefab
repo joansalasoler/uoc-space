@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3860911725121537784}
   - component: {fileID: 3860911725121537785}
   - component: {fileID: 3860911725121537787}
+  - component: {fileID: 2826839643234443383}
   - component: {fileID: 3860911725121537783}
   - component: {fileID: 3860911725121537782}
   - component: {fileID: 3860911725121537781}
@@ -81,10 +82,23 @@ MonoBehaviour:
   fallFactor: 0.35
   jumpForce: 1450
   direction: 0
+  fireEnabled: 0
   isJumping: 0
   isRunning: 0
   isGrounded: 0
   isFlipped: 0
+--- !u!114 &2826839643234443383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860911725121537780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde34bbbb84359f429a7a09348b9489f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3860911725121537783
 SpriteRenderer:
   m_ObjectHideFlags: 0

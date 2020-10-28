@@ -10,19 +10,20 @@ GameObject:
   m_Component:
   - component: {fileID: 1987010507949255588}
   - component: {fileID: 7363887406588713154}
+  - component: {fileID: 4450068814869763637}
   - component: {fileID: 2061005749793993008}
   - component: {fileID: -2492451272181326826}
   - component: {fileID: 1987010507949255589}
   - component: {fileID: 6643371927468083439}
   - component: {fileID: 2037493837426570403}
-  - component: {fileID: 534602238665131228}
+  - component: {fileID: 1146434532427880848}
   m_Layer: 11
   m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1987010507949255588
 Transform:
   m_ObjectHideFlags: 0
@@ -50,6 +51,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wasCollected: 0
+--- !u!114 &4450068814869763637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987010507949255590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adf39b09cebd551ab38a884eba88528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2061005749793993008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +93,7 @@ MonoBehaviour:
   minSpeed: 3
   direction: 1
   minSideAngle: 70
+  isFlipped: 0
   impulse: {x: 1, y: 10}
 --- !u!212 &1987010507949255589
 SpriteRenderer:
@@ -169,7 +183,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!82 &534602238665131228
+--- !u!82 &1146434532427880848
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,8 +193,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9dad1d2ed8809c46696dd8149e4484e2, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

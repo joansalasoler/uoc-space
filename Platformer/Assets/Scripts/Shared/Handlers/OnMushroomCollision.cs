@@ -12,8 +12,9 @@ namespace Game.Shared {
          * Activate the power-up when collected.
          */
         protected override void CollectPowerup(Collider2D collider) {
-            base.CollectPowerup(collider);
             GetColliderPlayer(collider).ActivateMushroomPowers();
+            AudioService.PlayOneShot(gameObject, "Collect Mushroom");
+            base.CollectPowerup(collider);
         }
     }
 }

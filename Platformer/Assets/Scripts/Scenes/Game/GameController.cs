@@ -85,6 +85,7 @@ public class GameController : MonoBehaviour {
     public void OnPlayerWon() {
         ShowCongratsOverlay();
         Invoke("LoadMainScene", 6.0f);
+        AudioService.PlayOneShot(gameObject, "Player Win");
     }
 
 
@@ -92,10 +93,12 @@ public class GameController : MonoBehaviour {
      * Transitions to the player wins state.
      */
     public void OnTimeUp() {
-        player.Damage();
-        pause.enabled = false;
-        ShowTimeUpOverlay();
-        Invoke("ShowGameOverOverlay", 3.0f);
-        Invoke("LoadMainScene", 6.0f);
+        if (player.hasWon == false) {
+            player.Damage();
+            pause.enabled = false;
+            ShowTimeUpOverlay();
+            Invoke("ShowGameOverOverlay", 3.0f);
+            Invoke("LoadMainScene", 6.0f);
+        }
     }
 }

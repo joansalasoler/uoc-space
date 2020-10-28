@@ -30,6 +30,7 @@ namespace Game.Shared {
         public override void Damage() {
             if (isAlive == true) {
                 isAlive = false;
+                AudioService.PlayOneShot(gameObject, "Monster Hurt");
                 DisableMotion();
                 DisableColliders();
                 AddDamageForce();
@@ -41,8 +42,11 @@ namespace Game.Shared {
          * {inheritDoc}
          */
         public override void Kill() {
-            DisableMotion();
-            base.Kill();
+            if (isAlive == true) {
+                AudioService.PlayOneShot(gameObject, "Monster Die");
+                DisableMotion();
+                base.Kill();
+            }
         }
 
 

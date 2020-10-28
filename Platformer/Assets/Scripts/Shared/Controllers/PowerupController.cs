@@ -18,8 +18,18 @@ namespace Game.Shared {
         public virtual void Collect() {
             if (wasCollected == false) {
                 wasCollected = true;
-                gameObject.SetActive(false);
+                DisableColliders();
+                Destroy(gameObject, 0.1f);
             }
+        }
+
+
+        /**
+         * Disable all the colliders of this power-up.
+         */
+        public virtual void DisableColliders() {
+            var colliders = GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, c => c.enabled = false);
         }
     }
 }

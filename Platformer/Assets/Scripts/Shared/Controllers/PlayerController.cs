@@ -24,6 +24,9 @@ namespace Game.Shared {
         /** Star shield of the player*/
         public GameObject superShield = null;
 
+        /** Set to true when the player has won */
+        public bool hasWon = false;
+
         /** Star power-up duration in seconds */
         public float starTimeout = 20.0f;
 
@@ -47,9 +50,6 @@ namespace Game.Shared {
 
         /** Set to true when the player is not alive */
         private bool wasKilled = false;
-
-        /** Set to true when the player has won */
-        private bool hasWon = false;
 
         /** Input events controlller */
         private InputController input;
@@ -159,7 +159,7 @@ namespace Game.Shared {
          */
         public override void Damage() {
             if (!starActive && !shieldActive) {
-                if (flowerActive || mushroomActive) {
+                if (mushroomActive) {
                     DeactivateAllPowers();
                     ActivateShieldPowers();
                 } else {
@@ -173,9 +173,11 @@ namespace Game.Shared {
          * {inheritDoc}
          */
         public override void Kill() {
-            base.Kill();
-            input.enabled = false;
-            playerDied.Invoke();
+            if (isAlive == true) {
+                base.Kill();
+                input.enabled = false;
+                playerDied.Invoke();
+            }
         }
 
 

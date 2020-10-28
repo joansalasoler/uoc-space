@@ -25,6 +25,9 @@ public class ScoreboardController : MonoBehaviour {
     /** Text for the countdown time remaining */
     [SerializeField] private Text time = null;
 
+    /** If the final countdown has been started */
+    private bool onFinalCountdown = false;
+
 
     /**
      * Attach the events.
@@ -59,7 +62,15 @@ public class ScoreboardController : MonoBehaviour {
      * Update the text for the countdown.
      */
     public void UpdateCountdown() {
-        time.text = countdownWatch.GetSeconds().ToString("0");
+        float remainingSeconds = countdownWatch.GetSeconds();
+        time.text = remainingSeconds.ToString("0");
+
+        if (!onFinalCountdown && remainingSeconds < 100.0f) {
+            AudioService.PlayLoop(gameObject, "Count Down");
+            onFinalCountdown = true;
+        } else if (remainingSeconds < 0.0f) {
+            AudioService.StopLoop(gameObject);
+        }
     }
 
 

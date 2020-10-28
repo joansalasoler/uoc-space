@@ -12,7 +12,7 @@ namespace Game.Shared {
         [HideInInspector] public Vector2 velocity;
 
         /** Fireball template object */
-        [SerializeField] private GameObject fireball;
+        [SerializeField] private GameObject fireball = null;
 
         /** Maximum horizontal speed on the ground */
         public float groundSpeed = 450.0f;

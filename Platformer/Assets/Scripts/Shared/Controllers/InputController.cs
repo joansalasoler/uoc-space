@@ -15,10 +15,10 @@ namespace Game.Shared {
         [SerializeField] private GameObject fireball = null;
 
         /** Maximum horizontal speed on the ground */
-        public float groundSpeed = 450.0f;
+        public float groundSpeed = 350.0f;
 
         /** Maximum horizontal speed on the air */
-        public float airSpeed = 250.0f;
+        public float airSpeed = 150.0f;
 
         /** Horizontal speed multiplier when running */
         public float runFactor = 2.0f;
@@ -94,7 +94,7 @@ namespace Game.Shared {
             isJumpRequested |= Input.GetButtonDown("Jump");
             isJumpCanceled |= Input.GetButtonUp("Jump");
 
-            if (fireEnabled && Input.GetButtonUp("Fire2")) {
+            if (fireEnabled && Input.GetButtonDown("Fire1")) {
                 ThrowFireball();
             }
         }

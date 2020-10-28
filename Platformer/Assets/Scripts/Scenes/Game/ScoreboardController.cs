@@ -68,7 +68,7 @@ public class ScoreboardController : MonoBehaviour {
         if (!onFinalCountdown && remainingSeconds < 100.0f) {
             AudioService.PlayLoop(gameObject, "Count Down");
             onFinalCountdown = true;
-        } else if (remainingSeconds < 0.0f) {
+        } else if (remainingSeconds <= 0.0f) {
             AudioService.StopLoop(gameObject);
         }
     }

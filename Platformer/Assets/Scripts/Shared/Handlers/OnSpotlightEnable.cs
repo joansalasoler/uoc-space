@@ -13,7 +13,7 @@ namespace Game.Shared {
         private void OnBecameVisible() {
             if (hasBeenRun == false) {
                 AudioService.PlayOneShot(gameObject, "Player Land");
-                Destroy(gameObject, 3.0f);
+                Destroy(gameObject, 2.5f);
                 hasBeenRun = true;
             }
         }

@@ -31,7 +31,7 @@ namespace Game.Shared {
         public float starTimeout = 10.0f;
 
         /** Shield power-up duration in seconds */
-        public float shieldTimeout = 2.5f;
+        public float shieldTimeout = 2.0f;
 
         /** Wheter the star power-up is active */
         public bool starActive = false;

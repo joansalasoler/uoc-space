@@ -17,6 +17,7 @@ namespace Game.Shared {
                 var player = target.GetComponent<PlayerController>();
 
                 if (player != null && !player.hasWon) {
+                    GetComponent<Animator>().SetBool("isActive", true);
                     AudioService.PlayOneShot(gameObject, "Player Win");
                     player.DeclareWinner();
                 }

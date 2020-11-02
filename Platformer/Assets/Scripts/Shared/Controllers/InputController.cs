@@ -53,6 +53,9 @@ namespace Game.Shared {
         /** True when the player canceled a jump */
         private bool isJumpCanceled = false;
 
+        /** Timestamp when the last fireball was loaded */
+        private float fireLoadTime = 0.0f;
+
         /** Rigidbody of the actor */
         private Rigidbody2D actorRigidbody;
 
@@ -94,8 +97,16 @@ namespace Game.Shared {
             isJumpRequested |= Input.GetButtonDown("Jump");
             isJumpCanceled |= Input.GetButtonUp("Jump");
 
+            // Throw a fireball only if they were enabled and if the
+            // player hasn't started to run instead. This is because
+            // we use the same button for running an shooting.
+
             if (fireEnabled && Input.GetButtonDown("Fire1")) {
-                ThrowFireball();
+                fireLoadTime = Time.time;
+            } else if (fireEnabled && Input.GetButtonUp("Fire1")) {
+                if (Time.time - fireLoadTime < 0.5f) {
+                    ThrowFireball();
+                }
             }
         }
 

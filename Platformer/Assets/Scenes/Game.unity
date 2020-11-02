@@ -1030,6 +1030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 124879852}
+  - component: {fileID: 124879856}
   - component: {fileID: 124879855}
   - component: {fileID: 124879854}
   - component: {fileID: 124879853}
@@ -1061,7 +1062,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124879851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.03, y: 0}
   m_Torque: 0
@@ -1137,6 +1138,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &124879856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124879851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128748727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193769443}
+  - component: {fileID: 193769447}
   - component: {fileID: 193769446}
   - component: {fileID: 193769445}
   - component: {fileID: 193769444}
@@ -1494,7 +1508,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193769442}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.03, y: 0}
   m_Torque: 0
@@ -1570,6 +1584,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &193769447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193769442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &211335788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 463681490}
+  - component: {fileID: 463681494}
   - component: {fileID: 463681493}
   - component: {fileID: 463681492}
   - component: {fileID: 463681491}
@@ -3526,7 +3553,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463681489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.05, y: 0}
   m_Torque: 0
@@ -3602,6 +3629,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &463681494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463681489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &478820924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4787,6 +4826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681749935}
+  - component: {fileID: 681749939}
   - component: {fileID: 681749938}
   - component: {fileID: 681749937}
   - component: {fileID: 681749936}
@@ -4818,7 +4858,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681749934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.07, y: 0}
   m_Torque: 0
@@ -4894,6 +4934,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &681749939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681749934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &683393563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6376,6 +6428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 958539183}
+  - component: {fileID: 958539187}
   - component: {fileID: 958539186}
   - component: {fileID: 958539185}
   - component: {fileID: 958539184}
@@ -6407,7 +6460,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958539182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.07, y: 0}
   m_Torque: 0
@@ -6483,6 +6536,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &958539187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958539182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992032055
 GameObject:
   m_ObjectHideFlags: 0
@@ -13482,6 +13547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1034726677}
+  - component: {fileID: 1034726681}
   - component: {fileID: 1034726680}
   - component: {fileID: 1034726679}
   - component: {fileID: 1034726678}
@@ -13513,7 +13579,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034726676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.05, y: 0}
   m_Torque: 0
@@ -13589,6 +13655,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1034726681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034726676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1034840288
 GameObject:
   m_ObjectHideFlags: 0
@@ -13742,6 +13820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1079553656}
+  - component: {fileID: 1079553660}
   - component: {fileID: 1079553659}
   - component: {fileID: 1079553658}
   - component: {fileID: 1079553657}
@@ -13773,7 +13852,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079553655}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.05, y: 0}
   m_Torque: 0
@@ -13849,6 +13928,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1079553660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079553655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1080629176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14532,6 +14623,8 @@ MonoBehaviour:
   player: {fileID: 3860911726730416737}
   pause: {fileID: 1395132523}
   endgame: {fileID: 1395132524}
+  spawnPoint: {x: -107.5, y: 120, z: 0}
+  respawnPoint: {x: -107.5, y: -4.8, z: 0}
   playerLifes: 3
 --- !u!4 &1198201319
 Transform:
@@ -14584,6 +14677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1210052122}
+  - component: {fileID: 1210052126}
   - component: {fileID: 1210052125}
   - component: {fileID: 1210052124}
   - component: {fileID: 1210052123}
@@ -14615,9 +14709,9 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210052121}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
-  m_RelativeForce: {x: -0.02, y: 0}
+  m_RelativeForce: {x: -0.1, y: 0}
   m_Torque: 0
 --- !u!50 &1210052124
 Rigidbody2D:
@@ -14691,6 +14785,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1210052126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210052121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1210796649
 GameObject:
   m_ObjectHideFlags: 0
@@ -20810,6 +20916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1862004715}
+  - component: {fileID: 1862004719}
   - component: {fileID: 1862004718}
   - component: {fileID: 1862004717}
   - component: {fileID: 1862004716}
@@ -20841,7 +20948,7 @@ ConstantForce2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862004714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Force: {x: 0, y: 0}
   m_RelativeForce: {x: -0.05, y: 0}
   m_Torque: 0
@@ -20917,6 +21024,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1862004719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862004714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f020e7ca3cf7f16fb78c211252cb4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1875544384
 GameObject:
   m_ObjectHideFlags: 0

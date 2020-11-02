@@ -13,6 +13,12 @@ namespace Game.Shared {
         /** Invoked when the wallet changes */
         public static Action<PlayerWallet> walletChange;
 
+        /** Player lifes */
+        public int lifes = 0;
+
+        /** Fireballs to throw */
+        public int fireballs = 0;
+
         /** Score points */
         public int points = 0;
 
@@ -21,19 +27,13 @@ namespace Game.Shared {
 
 
         /**
-         * Reset the wallet.
-         */
-        public void Awake() {
-            Clear();
-        }
-
-
-        /**
-         * Empty the wallet.
+         * Clear the wallet.
          */
         public void Clear() {
-            coins = 0;
+            lifes = 0;
+            fireballs = 0;
             points = 0;
+            coins = 0;
         }
 
 
@@ -51,6 +51,24 @@ namespace Game.Shared {
          */
         public void StorePoints(int points) {
             this.points += points;
+            walletChange.Invoke(this);
+        }
+
+
+        /**
+         * Store a number of lifes.
+         */
+        public void StoreLifes(int lifes) {
+            this.lifes += lifes;
+            walletChange.Invoke(this);
+        }
+
+
+        /**
+         * Store a number of fireballs.
+         */
+        public void StoreFireballs(int fireballs) {
+            this.fireballs += fireballs;
             walletChange.Invoke(this);
         }
     }

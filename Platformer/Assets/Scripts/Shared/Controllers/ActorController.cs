@@ -28,6 +28,15 @@ namespace Game.Shared {
 
 
         /**
+         * Enable all the colliders of this actor.
+         */
+        public virtual void EnableColliders() {
+            var colliders = GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, c => c.enabled = true);
+        }
+
+
+        /**
          * Disable all the colliders of this actor.
          */
         public virtual void DisableColliders() {

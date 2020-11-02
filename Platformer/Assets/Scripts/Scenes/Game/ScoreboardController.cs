@@ -19,6 +19,9 @@ public class ScoreboardController : MonoBehaviour {
     /** Text for the number of coins earned */
     [SerializeField] private Text coins = null;
 
+    /** Text for the number of player lifes */
+    [SerializeField] private Text lifes = null;
+
     /** Text for the number of points earned */
     [SerializeField] private Text points = null;
 
@@ -55,6 +58,7 @@ public class ScoreboardController : MonoBehaviour {
     public void UpdateWallet(PlayerWallet wallet) {
         points.text = wallet.points.ToString();
         coins.text = wallet.coins.ToString();
+        lifes.text = wallet.lifes.ToString();
     }
 
 

@@ -76,8 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dfb90333216b69a8ab9b727e71c391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earnedPoints: 100
+  earnedPoints: 200
   earnedCoins: 0
+  earnedLifes: 1
 --- !u!114 &8557049953495346155
 MonoBehaviour:
   m_ObjectHideFlags: 0

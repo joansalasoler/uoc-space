@@ -80,6 +80,7 @@ namespace Game.Shared {
             actorAnimator.SetBool("isRunning", input.isRunning);
             actorAnimator.SetBool("isJumping", input.isJumping);
             actorAnimator.SetFloat("moveSpeed", Mathf.Abs(input.velocity.x));
+            actorAnimator.SetBool("isAlive", isAlive);
             actorAnimator.SetBool("isHurt", isHurt);
         }
 
@@ -178,6 +179,20 @@ namespace Game.Shared {
                 input.enabled = false;
                 playerDied.Invoke();
             }
+        }
+
+
+        /**
+         * Resurrects this player.
+         */
+        public void Resurrect() {
+            isAlive = true;
+            isHurt = false;
+            wasKilled = false;
+            input.enabled = true;
+            EnableColliders();
+            DeactivateAllPowers();
+            ActivateShieldPowers();
         }
 
 

@@ -11,11 +11,14 @@ namespace Game.Shared {
         /** Invoked when some points are earned */
         public static Action<Vector2, int> pointsEarned;
 
-        /** Points earned on the collision */
+        /** Points earned with the collision */
         [SerializeField] protected int earnedPoints = 100;
 
-        /** Coins earned on the collision */
+        /** Coins earned with the collision */
         [SerializeField] protected int earnedCoins = 0;
+
+        /** Lifes earned with the collision */
+        [SerializeField] protected int earnedLifes = 0;
 
 
         /**
@@ -41,7 +44,7 @@ namespace Game.Shared {
 
 
         /**
-         * Emits an event for the point that are collected.
+         * Emits an event for the points that are collected.
          */
         protected void EmitEarnedPoints(int points, Vector2 position) {
             if (points > 0) pointsEarned.Invoke(position, points);
@@ -58,6 +61,7 @@ namespace Game.Shared {
             if (player is PlayerController && player.wallet != null) {
                 if (earnedCoins > 0) player.wallet.StoreCoins(earnedCoins);
                 if (earnedPoints > 0) player.wallet.StorePoints(earnedPoints);
+                if (earnedLifes > 0) player.wallet.StoreLifes(earnedLifes);
             }
         }
 

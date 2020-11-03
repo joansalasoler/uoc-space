@@ -66,6 +66,7 @@ namespace Game.Shared {
             base.OnEnable();
             actorRenderer = GetComponent<SpriteRenderer>();
             input = GetComponent<InputController>();
+            SetIgnoreMonsterCollisions(false);
         }
 
 

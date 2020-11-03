@@ -31,7 +31,7 @@ Vídeo de demostración
 * Lógica y movimiento de los enemigos.
 * Muerte de los personajes y vidas múltiples.
 * Cronometro que limita el tiempo de juego.
-* Lógica de recompensas y power-ups.
+* Lógica de recompensas, power-ups y bloques rotos.
 * Interfaz gráfica con puntos, monedas, vidas y tiempo.
 * Animaciones, efectos de partículas y sonidos.
 

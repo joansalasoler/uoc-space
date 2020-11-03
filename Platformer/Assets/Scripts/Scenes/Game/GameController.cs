@@ -93,7 +93,6 @@ public class GameController : MonoBehaviour {
      */
     public void OnGameRestart() {
         player.wallet.Clear();
-        SceneManager.LoadScene("Game");
     }
 
 

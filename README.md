@@ -14,8 +14,8 @@ es seguro el desembarco en tierra firme. La misión no será fácil.
 Podremos desplazarnos por el satélite usando los cursores de nuestro controlador
 de juegos. Haremos que Nalesa salte pulsando el botón A/Espacio y que corra
 manteniendo presionado el botón B/Control. Pulsando el botón B/Control en
-ráfagas cortas, el personaje disparará pelotas de ping-pong prendidas en fuego.
-Siempre y cuando haya tomado antes una dosis de la Flor del Fuego.
+ráfagas cortas el personaje escupirá pelotas de ping-pong en llamas; siempre y
+cuando haya tomado antes una buena dosis de la Flor del Fuego.
 
 Vídeo de demostración
 ---------------------
@@ -32,8 +32,8 @@ Vídeo de demostración
 * Muerte de los personajes y vidas múltiples.
 * Cronometro que limita el tiempo de juego.
 * Lógica de recompensas, power-ups y bloques rotos.
-* Interfaz gráfica con puntos, monedas, vidas y tiempo.
-* Animaciones, efectos de partículas y sonidos.
+* Interfaz gráfica con recuento de puntos, monedas, vidas y tiempo.
+* Animaciones, sonidos y efectos de partículas.
 
 Detalles de la implementación
 -----------------------------
@@ -84,5 +84,5 @@ exclusivamente para su uso en el juego por el autor, Joan Sala Soler.
 [10] NATHANAELSAMS. 2011. Running on grass with wet feet [Efecto de sonido].
      Disponible en: https://freesound.org/people/nathanaelsams/sounds/127955/
 
-[10] NICK121087. 2014. Glass break [Efecto de sonido].
+[11] NICK121087. 2014. Glass break [Efecto de sonido].
      Disponible en: https://freesound.org/people/nick121087/sounds/232176/

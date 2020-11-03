@@ -83,3 +83,6 @@ exclusivamente para su uso en el juego por el autor, Joan Sala Soler.
 
 [10] NATHANAELSAMS. 2011. Running on grass with wet feet [Efecto de sonido].
      Disponible en: https://freesound.org/people/nathanaelsams/sounds/127955/
+
+[10] NICK121087. 2014. Glass break [Efecto de sonido].
+     Disponible en: https://freesound.org/people/nick121087/sounds/232176/

@@ -8,6 +8,10 @@ namespace Game.Shared {
      */
     public class OnBrickCollision : OnRewardCollision {
 
+        /** Object to show when the brick breaks */
+        [SerializeField] private GameObject brokenBrick = null;
+
+
         /**
          * Invoked when the object is enabled.
          */
@@ -21,6 +25,9 @@ namespace Game.Shared {
          * Destroy the game object that triggered the collision.
          */
         private void DestroyBrick() {
+            GameObject prefab = Instantiate(brokenBrick);
+            prefab.transform.position = gameObject.transform.position;
+            AudioService.PlayOneShot(prefab, "Break Brick");
             Destroy(gameObject);
         }
 

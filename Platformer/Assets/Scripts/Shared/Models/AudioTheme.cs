@@ -31,7 +31,8 @@ namespace Game.Shared {
             new AudioEvent { name = "Collect Flower" },
             new AudioEvent { name = "Collect Mushroom" },
             new AudioEvent { name = "Collect Star" },
-            new AudioEvent { name = "Collect Points" }
+            new AudioEvent { name = "Collect Points" },
+            new AudioEvent { name = "Break Brick" }
         };
     }
 }

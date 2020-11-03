@@ -6,10 +6,10 @@ namespace Game.Shared {
     /**
      * Delegates collisions for a reward key trigger.
      */
-    public class OnGiftboxKeyTrigger : MonoBehaviour {
+    public class OnBrickKeyTrigger : MonoBehaviour {
 
         /** Reward collision delegate */
-        public Action<Collider2D> giftboxKeyTriggerEnter;
+        public Action<Collider2D> brickKeyTriggerEnter;
 
         /** Minimus time between trigger invocations */
         private float invokeDelay = 0.5f;
@@ -25,7 +25,7 @@ namespace Game.Shared {
         private void OnTriggerEnter2D(Collider2D collider) {
             if (collider.gameObject.CompareTag("Player")) {
                 if (Time.time - timeStamp > invokeDelay) {
-                    giftboxKeyTriggerEnter.Invoke(collider);
+                    brickKeyTriggerEnter.Invoke(collider);
                     timeStamp = Time.time;
                 }
             }

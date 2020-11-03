@@ -19,8 +19,8 @@ namespace Game.Shared {
          * Invoked when the object is enabled.
          */
         private void Start() {
-            var trigger = GetComponentInChildren<OnGiftboxKeyTrigger>();
-            trigger.giftboxKeyTriggerEnter = OnGiftboxKeyTriggerEnter;
+            var trigger = GetComponentInChildren<OnBrickKeyTrigger>();
+            trigger.brickKeyTriggerEnter = OnBrickKeyTriggerEnter;
         }
 
 
@@ -28,14 +28,14 @@ namespace Game.Shared {
          * Invoked when an object collides with this object.
          */
         protected override void OnCollisionEnter2D(Collision2D collision) {
-            // Only collistion with the Giftbox key are rewarded
+            // Only collisions with the Giftbox key are rewarded
         }
 
 
         /**
          * On collision activates the next reward on the queue.
          */
-        protected void OnGiftboxKeyTriggerEnter(Collider2D collider) {
+        protected void OnBrickKeyTriggerEnter(Collider2D collider) {
             if (!IsEmpty() && IsAliveColliderActor(collider)) {
                 var collisionPoint = Vector3.up + collider.bounds.center;
                 EmitEarnedPoints(earnedPoints, collisionPoint);

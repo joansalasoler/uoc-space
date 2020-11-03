@@ -58,7 +58,7 @@ namespace Game.Shared {
         protected void RewardColliderPlayer(Collider2D collider) {
             PlayerController player = GetColliderPlayer(collider);
 
-            if (player is PlayerController && player.wallet != null) {
+            if (player != null && player.wallet != null) {
                 if (earnedCoins > 0) player.wallet.StoreCoins(earnedCoins);
                 if (earnedPoints > 0) player.wallet.StorePoints(earnedPoints);
                 if (earnedLifes > 0) player.wallet.StoreLifes(earnedLifes);

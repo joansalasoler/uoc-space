@@ -11,11 +11,14 @@ namespace Game.Shared {
         /** Target velocity of the player */
         [HideInInspector] public Vector2 velocity;
 
+        /** Fireball template object */
+        [SerializeField] private GameObject fireball = null;
+
         /** Maximum horizontal speed on the ground */
-        public float groundSpeed = 450.0f;
+        public float groundSpeed = 350.0f;
 
         /** Maximum horizontal speed on the air */
-        public float airSpeed = 250.0f;
+        public float airSpeed = 150.0f;
 
         /** Horizontal speed multiplier when running */
         public float runFactor = 2.0f;
@@ -28,6 +31,9 @@ namespace Game.Shared {
 
         /** Target horizontal move direction */
         public float direction;
+
+        /** If fireballs are enabled */
+        public bool fireEnabled = false;
 
         /** Wether the player is currently jumping */
         public bool isJumping = false;
@@ -46,6 +52,9 @@ namespace Game.Shared {
 
         /** True when the player canceled a jump */
         private bool isJumpCanceled = false;
+
+        /** Timestamp when the last fireball was loaded */
+        private float fireLoadTime = 0.0f;
 
         /** Rigidbody of the actor */
         private Rigidbody2D actorRigidbody;
@@ -87,6 +96,18 @@ namespace Game.Shared {
             isFlipped = direction == .0f ? isFlipped : direction < .0f;
             isJumpRequested |= Input.GetButtonDown("Jump");
             isJumpCanceled |= Input.GetButtonUp("Jump");
+
+            // Throw a fireball only if they were enabled and if the
+            // player hasn't started to run instead. This is because
+            // we use the same button for running an shooting.
+
+            if (fireEnabled && Input.GetButtonDown("Fire1")) {
+                fireLoadTime = Time.time;
+            } else if (fireEnabled && Input.GetButtonUp("Fire1")) {
+                if (Time.time - fireLoadTime < 0.5f) {
+                    ThrowFireball();
+                }
+            }
         }
 
 
@@ -117,6 +138,20 @@ namespace Game.Shared {
             actorRigidbody.velocity = velocity;
             isJumpRequested = false;
             isJumpCanceled = false;
+        }
+
+
+        /**
+         * Throws a fireball from the player's position.
+         */
+        public void ThrowFireball() {
+            GameObject ball = Instantiate(fireball);
+            Rigidbody2D body = ball.GetComponent<Rigidbody2D>();
+            Destroy(ball, 2.5f);
+
+            ball.transform.position = actorRigidbody.transform.position;
+            body.AddForce((isFlipped ? -60.0f : 60.0f) * transform.right);
+            body.AddTorque(500.0f);
         }
 
 

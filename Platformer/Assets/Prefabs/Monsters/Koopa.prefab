@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 4074038178289572526}
   - component: {fileID: 3175309022301594915}
   - component: {fileID: 2436013586119238351}
-  - component: {fileID: 7820741180260195488}
+  - component: {fileID: 4657641541158247153}
+  - component: {fileID: 6311320572564599604}
+  - component: {fileID: 3131886708598291217}
   m_Layer: 9
   m_Name: Koopa
   m_TagString: Monster
@@ -30,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3175309022301594913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.76, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,6 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
+  monsterType: Koopa
+  damageForce: 600
 --- !u!114 &6090851534535644150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,7 +60,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3175309022301594913}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f66f7df1556442a9d8f5c0dcda57dd33, type: 3}
   m_Name: 
@@ -65,6 +69,7 @@ MonoBehaviour:
   minSpeed: 0.5
   direction: -1
   minSideAngle: 70
+  isFlipped: 0
   impulse: {x: 0, y: 0}
 --- !u!114 &4074038178289572526
 MonoBehaviour:
@@ -78,6 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earnedPoints: 100
+  earnedCoins: 0
+  bounceForce: 1300
 --- !u!212 &3175309022301594915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -116,9 +124,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1598047703
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4608048447754632782, guid: 5d16e534f401ff9bbb9f5b33b16909ec, type: 3}
+  m_Sprite: {fileID: 4847468527740639948, guid: 280b9cd0fc6ca75c6a316c4fbe8f1986, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +158,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &7820741180260195488
+--- !u!70 &4657641541158247153
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,10 +167,125 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3175309022301594913}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0a12a11e9ec2f69cbb03e0bd293129c9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09058976, y: -0.5241573}
-  m_Size: {x: 0.8027158, y: 0.9516854}
-  m_Direction: 0
+  m_Offset: {x: -0.0031790733, y: 0.0029590137}
+  m_Size: {x: 1.0082135, y: 1.0059975}
+  m_Direction: 1
+--- !u!95 &6311320572564599604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3175309022301594913}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04d2a6942824a6b4fbd0c5b37eb177c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &3131886708598291217
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3175309022301594913}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 15
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

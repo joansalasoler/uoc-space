@@ -21,7 +21,7 @@ namespace Game.Shared {
         public float minSideAngle = 70.0f;
 
         /** Wether the object is looking to the left */
-        private bool isFlipped = false;
+        public bool isFlipped = false;
 
         /** Adds an impulse force to the object */
         public Vector2 impulse = Vector2.zero;
@@ -37,13 +37,38 @@ namespace Game.Shared {
 
 
         /**
+         * Starts the object movement.
+         */
+        public void StartMoving() {
+            velocity = maxSpeed * direction * Vector2.right;
+            objectRigidbody.velocity = velocity;
+        }
+
+
+        /**
+         * Stops the object movement.
+         */
+        public void StopMoving() {
+            velocity = Vector2.zero;
+            objectRigidbody.velocity = Vector2.zero;
+        }
+
+
+        /**
          * Initialize the movement when enabled.
          */
         private void OnEnable() {
             objectRigidbody = GetComponent<Rigidbody2D>();
             objectRenderer = GetComponent<SpriteRenderer>();
-            velocity = maxSpeed * direction * Vector2.right;
-            objectRigidbody.velocity = velocity;
+            StartMoving();
+        }
+
+
+        /**
+         * Stop the movement when disabled.
+         */
+        private void OnDisable() {
+            StopMoving();
         }
 
 
@@ -54,7 +79,8 @@ namespace Game.Shared {
          * cleared only on FixedUpdate.
          */
         private void Update() {
-            isFlipped = direction == .0f ? isFlipped : direction < .0f;
+            Vector2 velocity = objectRigidbody.velocity;
+            isFlipped = velocity.x == 0.0f ? isFlipped : velocity.x < .0f;
             objectRenderer.flipX = isFlipped;
         }
 

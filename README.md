@@ -26,19 +26,62 @@ Vídeo de demostración
 ------------------------
 
 * Mecánicas de movimiento del avatar.
+* Lógica y movimiento de los enemigos.
 * Seguimiento del personaje con la cámara.
 * Campo de juego en diferentes capas de colisión.
-* Lógica y movimiento de los enemigos.
 * Muerte de los personajes y vidas múltiples.
 * Cronometro que limita el tiempo de juego.
 * Lógica de recompensas, power-ups y bloques rotos.
-* Interfaz gráfica con recuento de puntos, monedas, vidas y tiempo.
+* Interfaz con recuento de puntos, monedas, vidas y tiempo.
 * Animaciones, sonidos y efectos de partículas.
 
 Detalles de la implementación
 -----------------------------
 
--
+El terreno de juego se ha implementado usando por una parte varias capas de
+_tile maps_ (terreno pisable y no pisable) y por otra sprites con colisionadores
+(bloques, power-ups y personajes). A su vez, los objetos se organizan en
+distintas capas de colisión (Player Dome, Monster Dome y Shared Dome).
+
+En cuanto a la implementación, los controladores más relevantes són los
+siguientes que pueden encontrarse en el paquete Shared/Controllers.
+
+* InputController - Hace que el personaje se mueva por el campo de juego según
+  las ordenes del usuario. El protagonista puede caminar, correr, saltar o
+  lanzar bolas de ping-pong en llamas.
+
+* PlayerController - Lógica de estado del personaje, animación de sus
+  movimientos y recolección de power-ups.
+
+* MonsterController - Lógica de animación de los enemigos y de su estado. El
+  movimiento de los enemigos se implementa en el controlador MotionController.
+
+Así mismo, en el paquete Shared/Handlers se implementa la lógica de eventos y
+colisiones del personaje con su entorno. Los más importantes son los siguientes.
+
+* OnMonsterCollision - Cuando el personaje choca con un enemigo, decide si se va
+  a dañar al personaje o al enemigo y en qué grado.
+
+* OnGiftboxCollision - Si el protagonista choca contra una caja que contiene uno
+  o mas premios activa el siguiente premio en la cola.
+
+* OnBrickKeyTrigger - Para activar una caja de premio se delega en esta clase la
+  colisión del personaje con su llave (un colisionador interior de la caja), de
+  manera que sólo se activará si el personaje choca con la caja por debajo y la
+  mueve a cierta altura. La caja contiene además un Spring Joint para devolverla
+  a su lugar después de la colisión.
+
+* OnRewardCollision - La mayoría de bloques contienen premios (monedad, puntos
+  o power-ups). Está clase, de la que derivan todos los premios, es la que los
+  entrega al protagonista guardándolos en su cartera (PlayerWallet).
+
+Para los sonidos se ha creado el servicio Services/AudioService que contiene
+un singleton encargado de reproducirlos en alguno de los múltiples AudioSource
+que contienen los objetos del juego.
+
+Para poder centralizar los sonidos, estos se configuran en la clase AudioTheme y
+se les asigna un nombre de evento. Luego las clases de Shared/Handlers los
+reproducen pasando un nombre de evento y AudioSource al servicio AudioService.
 
 La última versión
 -----------------

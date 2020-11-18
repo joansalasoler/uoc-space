@@ -8,6 +8,9 @@ namespace Game.Shared {
      */
     public class InputController : MonoBehaviour {
 
+        /** Invoked when a fireball is thrown */
+        [HideInInspector] public Action fireballThrown;
+
         /** Target velocity of the player */
         [HideInInspector] public Vector2 velocity;
 
@@ -105,6 +108,7 @@ namespace Game.Shared {
                 fireLoadTime = Time.time;
             } else if (fireEnabled && Input.GetButtonUp("Fire1")) {
                 if (Time.time - fireLoadTime < 0.5f) {
+                    if (fireballThrown != null) fireballThrown.Invoke();
                     ThrowFireball();
                 }
             }
@@ -147,12 +151,13 @@ namespace Game.Shared {
         public void ThrowFireball() {
             GameObject ball = Instantiate(fireball);
             Rigidbody2D body = ball.GetComponent<Rigidbody2D>();
-            Destroy(ball, 2.5f);
 
             body.velocity = Vector2.right * actorRigidbody.velocity;
             ball.transform.position = actorRigidbody.transform.position;
-            body.AddForce((isFlipped ? -60.0f : 60.0f) * transform.right);
-            body.AddTorque(200.0f);
+
+            float force = 50.0f / (1.0f + body.velocity.x);
+            body.AddForce((isFlipped ? -force : force) * transform.right);
+            body.AddTorque(50.0f);
         }
 
 

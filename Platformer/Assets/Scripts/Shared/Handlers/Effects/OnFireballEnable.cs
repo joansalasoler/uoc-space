@@ -9,6 +9,7 @@ namespace Game.Shared {
     public class OnFireballEnable: MonoBehaviour {
         private void OnEnable() {
             AudioService.PlayOneShot(gameObject, "Player Fire");
+            Destroy(gameObject, 2.5f);
         }
     }
 }

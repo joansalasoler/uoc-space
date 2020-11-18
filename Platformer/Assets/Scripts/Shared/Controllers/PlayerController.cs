@@ -66,7 +66,17 @@ namespace Game.Shared {
             base.OnEnable();
             actorRenderer = GetComponent<SpriteRenderer>();
             input = GetComponent<InputController>();
+            input.fireballThrown += OnFireballThrown;
             SetIgnoreMonsterCollisions(false);
+            ActivateFlowerPowers();
+        }
+
+
+        /**
+         * Animate the character when a fireball is thrown.
+         */
+        private void OnFireballThrown() {
+            actorAnimator.SetTrigger("shoot");
         }
 
 

@@ -149,9 +149,10 @@ namespace Game.Shared {
             Rigidbody2D body = ball.GetComponent<Rigidbody2D>();
             Destroy(ball, 2.5f);
 
+            body.velocity = Vector2.right * actorRigidbody.velocity;
             ball.transform.position = actorRigidbody.transform.position;
             body.AddForce((isFlipped ? -60.0f : 60.0f) * transform.right);
-            body.AddTorque(500.0f);
+            body.AddTorque(200.0f);
         }
 
 

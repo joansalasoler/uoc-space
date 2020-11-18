@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2674613039340183172}
   - component: {fileID: 3920286035037142715}
-  - component: {fileID: 3667870551242193885}
   - component: {fileID: 7553838558571191927}
+  - component: {fileID: 3667870551242193885}
   - component: {fileID: 2674613039340183175}
   - component: {fileID: 5849510571785084434}
   - component: {fileID: 3228088706565165712}
@@ -53,6 +53,23 @@ MonoBehaviour:
   isAlive: 1
   monsterType: Goomba
   damageForce: 600
+  shieldActive: 0
+--- !u!114 &7553838558571191927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674613039340183173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earnedPoints: 100
+  earnedCoins: 0
+  earnedLifes: 0
+  bounceForce: 1300
 --- !u!114 &3667870551242193885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,21 +88,6 @@ MonoBehaviour:
   minSideAngle: 70
   isFlipped: 0
   impulse: {x: 0, y: 0}
---- !u!114 &7553838558571191927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2674613039340183173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  earnedPoints: 100
-  earnedCoins: 0
-  bounceForce: 1300
 --- !u!212 &2674613039340183175
 SpriteRenderer:
   m_ObjectHideFlags: 0

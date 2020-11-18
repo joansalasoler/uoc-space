@@ -115,7 +115,7 @@ namespace Game.Shared {
          * Toggles the direction if a side collision occurred.
          */
         private void OnCollisionEnter2D(Collision2D collision) {
-            if (IsSideCollision(collision)) {
+            if (enabled && IsSideCollision(collision)) {
                 direction = IsLeftCollision(collision) ? -1.0f : 1.0f;
             }
         }

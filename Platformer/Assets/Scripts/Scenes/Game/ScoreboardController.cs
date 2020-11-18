@@ -75,8 +75,6 @@ public class ScoreboardController : MonoBehaviour {
         float remainingSeconds = countdownWatch.GetSeconds();
         time.text = remainingSeconds.ToString("0");
 
-        Debug.Log(remainingSeconds);
-
         if (remainingSeconds < 200.0f) {
             easyRain.SetActive(true);
         }

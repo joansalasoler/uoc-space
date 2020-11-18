@@ -9,7 +9,7 @@ namespace Game.Shared {
     public class OnMonsterCollision: OnRewardCollision {
 
         /** Last time a force was added after killing a monster */
-        private static float lastForceTime = 0.0f;
+        protected static float lastForceTime = 0.0f;
 
         /** Push up force when the player kills a monster */
         public float bounceForce = 1300.0f;
@@ -48,7 +48,7 @@ namespace Game.Shared {
 
                     RewardColliderPlayer(collision.collider);
                     EmitEarnedPoints(points, collision.GetContact(0).point);
-                    monster.Kill();
+                    monster.OnHeadCollision();
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace Game.Shared {
         /**
          * Checks if the collision must kill the player.
          */
-        private bool IsDeadlyForPlayer(Collision2D collision) {
+        protected bool IsDeadlyForPlayer(Collision2D collision) {
             Vector2 monsterCenter = collision.collider.bounds.center;
             Vector2 playerCenter = collision.otherCollider.bounds.center;
 

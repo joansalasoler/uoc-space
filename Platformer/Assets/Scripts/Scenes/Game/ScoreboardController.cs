@@ -16,6 +16,12 @@ public class ScoreboardController : MonoBehaviour {
     /** Count down watch instance */
     [SerializeField] private CountdownWatch countdownWatch = null;
 
+    /** Easy rain particle system reference */
+    [SerializeField] private GameObject easyRain = null;
+
+    /** Hard rain particle system reference */
+    [SerializeField] private GameObject hardRain = null;
+
     /** Text for the number of coins earned */
     [SerializeField] private Text coins = null;
 
@@ -68,6 +74,16 @@ public class ScoreboardController : MonoBehaviour {
     public void UpdateCountdown() {
         float remainingSeconds = countdownWatch.GetSeconds();
         time.text = remainingSeconds.ToString("0");
+
+        Debug.Log(remainingSeconds);
+
+        if (remainingSeconds < 200.0f) {
+            easyRain.SetActive(true);
+        }
+
+        if (remainingSeconds < 150.0f) {
+            hardRain.SetActive(true);
+        }
 
         if (!onFinalCountdown && remainingSeconds < 100.0f) {
             AudioService.PlayLoop(gameObject, "Count Down");

@@ -68,7 +68,6 @@ namespace Game.Shared {
             input = GetComponent<InputController>();
             input.fireballThrown += OnFireballThrown;
             SetIgnoreMonsterCollisions(false);
-            ActivateFlowerPowers();
         }
 
 

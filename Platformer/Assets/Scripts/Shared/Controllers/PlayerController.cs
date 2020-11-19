@@ -274,7 +274,10 @@ namespace Game.Shared {
         private void SetIgnoreMonsterCollisions(bool ignore) {
             int players = LayerMask.NameToLayer("Player");
             int monsters = LayerMask.NameToLayer("Monster");
+            int shells = LayerMask.NameToLayer("Shells");
+
             Physics2D.IgnoreLayerCollision(players, monsters, ignore);
+            Physics2D.IgnoreLayerCollision(players, shells, ignore);
         }
     }
 }

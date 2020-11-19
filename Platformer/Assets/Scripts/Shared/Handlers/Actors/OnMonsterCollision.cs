@@ -55,13 +55,15 @@ namespace Game.Shared {
 
 
         /**
-         * Checks if the collision must kill the player.
+         * Checks if the collision must kill the player. That is, if the
+         * collision did not happen on the head of the monster.
          */
         protected bool IsDeadlyForPlayer(Collision2D collision) {
             Vector2 monsterCenter = collision.collider.bounds.center;
             Vector2 playerCenter = collision.otherCollider.bounds.center;
+            bool isDeadly = monsterCenter.y - playerCenter.y < .5f;
 
-            return monsterCenter.y - playerCenter.y < .5f;
+            return isDeadly;
         }
     }
 }

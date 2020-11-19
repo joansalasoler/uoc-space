@@ -55,6 +55,26 @@ namespace Game.Shared {
 
 
         /**
+         * Inverts the direction of the movement.
+         */
+        public void TurnAround() {
+            direction = -direction;
+            UpdateVelocity();
+        }
+
+
+        /**
+         * Updates the velocity so the object always moves at
+         * it's maximum speed.
+         */
+        private void UpdateVelocity() {
+            velocity = objectRigidbody.velocity;
+            velocity.x = maxSpeed * direction;
+            objectRigidbody.velocity = velocity;
+        }
+
+
+        /**
          * Initialize the movement when enabled.
          */
         private void OnEnable() {
@@ -87,7 +107,7 @@ namespace Game.Shared {
 
         /**
          * Ensures that the object is constantly moving on the correct
-         * direction. On each side collision, or if the object is stopped,
+         * direction. On each side collision or if the object is stopped
          * the direction is reversed and the velocity set to maximum.
          */
         private void FixedUpdate() {
@@ -99,36 +119,39 @@ namespace Game.Shared {
             }
 
             if (speed < minSpeed) {
-                direction = -direction;
-                velocity = objectRigidbody.velocity;
-                velocity.x = maxSpeed * direction;
-                objectRigidbody.velocity = velocity;
-            } else if (speed * direction < .0f) {
-                velocity = objectRigidbody.velocity;
-                velocity.x = maxSpeed * direction;
-                objectRigidbody.velocity = velocity;
+                TurnAround();
+            } else {
+                UpdateVelocity();
             }
         }
 
 
         /**
-         * Toggles the direction if a side collision occurred.
+         * Toggles the direction if a side collision occurred. A small
+         * impulse is also added in the new direction to ensure the
+         * objects don't stick together.
          */
         private void OnCollisionEnter2D(Collision2D collision) {
             if (enabled && IsSideCollision(collision)) {
-                direction = IsLeftCollision(collision) ? -1.0f : 1.0f;
+                if (direction == GetCollisionDirection(collision)) {
+                    TurnAround();
+                }
+
+                impulse = maxSpeed * direction * Vector2.right;
             }
         }
 
 
         /**
-         * Checks if a collision happened on the left direction.
+         * Obtains the direction of the collision from the point of view
+         * of the collisioner's center.
          */
-        private bool IsLeftCollision(Collision2D collision) {
+        private float GetCollisionDirection(Collision2D collision) {
             ContactPoint2D contact = collision.GetContact(0);
-            Vector2 center = collision.collider.bounds.center;
+            Vector2 center = collision.otherCollider.bounds.center;
+            float direction = contact.point.x - center.x;
 
-            return contact.point.x < center.x;
+            return direction < 0.0f ? -1.0f : 1.0f;
         }
 
 

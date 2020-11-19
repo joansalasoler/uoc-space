@@ -8,11 +8,8 @@ namespace Game.Shared {
      */
     public class OnMonsterCollision: OnRewardCollision {
 
-        /** Last time a force was added after killing a monster */
-        protected static float lastForceTime = 0.0f;
-
-        /** Push up force when the player kills a monster */
-        public float bounceForce = 1300.0f;
+        /** Last time a monster was damaged by the player */
+        protected static float lastDamageTime = 0.0f;
 
 
         /**
@@ -35,12 +32,11 @@ namespace Game.Shared {
                     player.Damage();
                 } else {
                     int points = earnedPoints;
-                    float elapsedTime = Time.fixedTime - lastForceTime;
+                    float elapsedTime = Time.fixedTime - lastDamageTime;
 
                     if (elapsedTime > 0.2) {
-                        var body = player.GetComponent<Rigidbody2D>();
-                        body.AddForce(bounceForce * Vector2.up);
-                        lastForceTime = Time.fixedTime;
+                        player.BounceUp();
+                        lastDamageTime = Time.fixedTime;
                     } else if (elapsedTime < 0.5) {
                         RewardColliderPlayer(collision.collider);
                         points += earnedPoints;

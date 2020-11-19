@@ -41,14 +41,7 @@ namespace Game.Shared {
 
             if (player != null && player.isAlive) {
                 ContactPoint2D contact = collision.GetContact(0);
-
-                float elapsedTime = Time.fixedTime - lastForceTime;
-
-                if (elapsedTime > 0.2) {
-                    var body = player.GetComponent<Rigidbody2D>();
-                    body.AddForce(bounceForce * Vector2.up);
-                    lastForceTime = Time.fixedTime;
-                }
+                player.BounceUp();
 
                 if (!koopa.wasPropeled) {
                     AudioService.PlayOneShot(gameObject, "Shell Collide");

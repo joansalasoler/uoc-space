@@ -32654,6 +32654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3860911725121537782, guid: 3fe11de7fd5f3dcd184ae082bf6107b7, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3860911725121537783, guid: 3fe11de7fd5f3dcd184ae082bf6107b7, type: 3}
       propertyPath: m_Sprite
       value: 

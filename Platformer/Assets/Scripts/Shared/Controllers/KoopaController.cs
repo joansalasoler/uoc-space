@@ -26,6 +26,7 @@ namespace Game.Shared {
          * {inheritDoc}
          */
         public override void OnHeadCollision() {
+            AudioService.PlayOneShot(gameObject, "Shell Collide");
             stoppedTime = Time.time;
             ActivateShell();
         }

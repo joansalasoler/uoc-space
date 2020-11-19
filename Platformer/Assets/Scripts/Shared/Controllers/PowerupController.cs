@@ -18,8 +18,9 @@ namespace Game.Shared {
         public virtual void Collect() {
             if (wasCollected == false) {
                 wasCollected = true;
+                HideGameObject();
                 DisableColliders();
-                Destroy(gameObject, 0.1f);
+                Destroy(gameObject, 2.0f);
             }
         }
 
@@ -30,6 +31,14 @@ namespace Game.Shared {
         public virtual void DisableColliders() {
             var colliders = GetComponentsInChildren<Collider2D>();
             Array.ForEach(colliders, c => c.enabled = false);
+        }
+
+
+        /**
+         * Hides the game object by disabling its renderer.
+         */
+        public virtual void HideGameObject() {
+            GetComponent<Renderer>().enabled = false;
         }
     }
 }

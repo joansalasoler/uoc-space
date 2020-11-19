@@ -61,3 +61,5 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 54ffd61393c0efb84ad7df8088e3ebfa, type: 3}
   - name: Break Brick
     clip: {fileID: 8300000, guid: 845e1af61b57ea19dbaed54ecae8f945, type: 3}
+  - name: Shell Collide
+    clip: {fileID: 8300000, guid: f11297cb6cfc62e79b19866394ee9a0b, type: 3}

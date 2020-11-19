@@ -51,8 +51,10 @@ namespace Game.Shared {
                 }
 
                 if (!koopa.wasPropeled) {
+                    AudioService.PlayOneShot(gameObject, "Shell Collide");
                     koopa.StartPropulsion(15.0f * contact.normal.x);
                 } else if (koopa.wasPropeled && contact.normal.y < 0.5f ) {
+                    AudioService.PlayOneShot(gameObject, "Shell Collide");
                     koopa.StopPropulsion();
                 }
             }

@@ -166,6 +166,20 @@ namespace Game.Shared {
 
 
         /**
+         * Resurrects this player.
+         */
+        public void Resurrect() {
+            isAlive = true;
+            isHurt = false;
+            wasKilled = false;
+            input.enabled = true;
+            EnableColliders();
+            DeactivateAllPowers();
+            ActivateShieldPowers();
+        }
+
+
+        /**
          * {inheritDoc}
          */
         public override void Damage() {
@@ -189,20 +203,6 @@ namespace Game.Shared {
                 input.enabled = false;
                 playerDied.Invoke();
             }
-        }
-
-
-        /**
-         * Resurrects this player.
-         */
-        public void Resurrect() {
-            isAlive = true;
-            isHurt = false;
-            wasKilled = false;
-            input.enabled = true;
-            EnableColliders();
-            DeactivateAllPowers();
-            ActivateShieldPowers();
         }
 
 

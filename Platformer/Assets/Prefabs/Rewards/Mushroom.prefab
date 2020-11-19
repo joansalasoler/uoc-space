@@ -77,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earnedPoints: 100
   earnedCoins: 0
+  earnedLifes: 0
 --- !u!114 &-2492451272181326826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +203,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 15
+  DopplerLevel: 0
+  MinDistance: 0.5
+  MaxDistance: 0.51
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

@@ -89,13 +89,5 @@ namespace Game.Shared {
                 DeactivateShell();
             }
         }
-
-
-        /**
-         * Checks if this monser has a minimum horizontal velocity.
-         */
-        private bool IsMoving() {
-            return Mathf.Abs(actorRigidbody.velocity.x) > 3.0f;
-        }
     }
 }

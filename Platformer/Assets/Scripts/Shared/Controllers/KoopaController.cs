@@ -85,8 +85,10 @@ namespace Game.Shared {
          * Deactivate the monster's shell automatically.
          */
         private void Update() {
-            if (shellActive && !wasPropeled && Time.time - stoppedTime > 5.0f) {
-                DeactivateShell();
+            if (shellActive && !wasPropeled) {
+                if (Time.time - stoppedTime > 5.0f) {
+                    DeactivateShell();
+                }
             }
         }
     }

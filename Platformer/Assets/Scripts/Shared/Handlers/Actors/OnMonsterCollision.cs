@@ -19,34 +19,48 @@ namespace Game.Shared {
         protected override void OnCollisionEnter2D(Collision2D collision) {
             PlayerController player = GetColliderPlayer(collision.collider);
             MonsterController monster = GetComponent<MonsterController>();
+            int points = earnedPoints;
 
-            if (player != null && player.isAlive && monster.isAlive) {
-                if (player.shieldActive) {
-                    return;
-                } else if (player.starActive) {
-                    int points = 2 * earnedPoints;
-                    RewardColliderPlayer(collision.collider);
-                    EmitEarnedPoints(points, collision.GetContact(0).point);
-                    monster.Damage();
-                } else if (IsDeadlyForPlayer(collision)) {
-                    player.Damage();
-                } else {
-                    int points = earnedPoints;
-                    float elapsedTime = Time.fixedTime - lastDamageTime;
+            // Handle only collisions with the player and if both the
+            // player and the monser are alive
 
-                    if (elapsedTime > 0.2) {
-                        player.BounceUp();
-                        lastDamageTime = Time.fixedTime;
-                    } else if (elapsedTime < 0.5) {
-                        RewardColliderPlayer(collision.collider);
-                        points += earnedPoints;
-                    }
-
-                    RewardColliderPlayer(collision.collider);
-                    EmitEarnedPoints(points, collision.GetContact(0).point);
-                    monster.OnHeadCollision();
-                }
+            if (player == null || !player.isAlive || !monster.isAlive) {
+                return;
             }
+
+            // If the player has star powers, kill the monster and reward
+            // the player twice the monster's price.
+
+            if (player.starActive) {
+                points = 2 * earnedPoints;
+                RewardColliderPlayer(collision.collider);
+                EmitEarnedPoints(points, collision.GetContact(0).point);
+                monster.Damage();
+                return;
+            }
+
+            // Damage the player if the collision was not on the monster's head
+
+            if (IsDeadlyForPlayer(collision)) {
+                player.Damage();
+                return;
+            }
+
+            // Damage the monster if the collision was on its head. When two
+            // monsters are damaged this way in less than 0.5 seconds appart,
+            // then reward the player twice of the price.
+
+            player.BounceUp();
+
+            if (Time.fixedTime - lastDamageTime < 0.5) {
+                RewardColliderPlayer(collision.collider);
+                points = 2 * earnedPoints;
+            }
+
+            lastDamageTime = Time.fixedTime;
+            RewardColliderPlayer(collision.collider);
+            EmitEarnedPoints(points, collision.GetContact(0).point);
+            monster.OnHeadCollision();
         }
 
 

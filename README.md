@@ -1,21 +1,11 @@
-PEC 2 - Un juego de plataformas
-===============================
+PEC 3 - Un juego de artillería
+==============================
 
 ¿Qué es?
 --------
 
-Un clon del juego de plataformas Super Mario Bros.
-
-Nos situamos en algún lugar remoto de la Vía Láctea. Año terrestre 1958. Nalesa,
-nuestra protagonista, es enviada al satélite Bubbles para su prospección. Su
-objetivo, izar la bandera de la Confederación para que sus camaradas sepan que
-es seguro el desembarco en tierra firme. La misión no será fácil.
-
-Podremos desplazarnos por el satélite usando los cursores de nuestro controlador
-de juegos. Haremos que Nalesa salte pulsando el botón A/Espacio y que corra
-manteniendo presionado el botón B/Control. Pulsando el botón B/Control en
-ráfagas cortas el personaje escupirá pelotas de ping-pong en llamas; siempre y
-cuando haya tomado antes una buena dosis de la Flor del Fuego.
+Una ampliación del juego implementado para la PEC 2 que añade nuevos sistemas
+de partículas, animaciones y nuevas inteligencias para los enemigos.
 
 Vídeo de demostración
 ---------------------
@@ -25,69 +15,108 @@ Vídeo de demostración
 ¿Qué se ha implementado?
 ------------------------
 
-* Mecánicas de movimiento del avatar.
-* Lógica y movimiento de los enemigos.
-* Seguimiento del personaje con la cámara.
-* Campo de juego en diferentes capas de colisión.
-* Muerte de los personajes y vidas múltiples.
-* Cronometro que limita el tiempo de juego.
-* Lógica de recompensas, power-ups y bloques rotos.
-* Interfaz con recuento de puntos, monedas, vidas y tiempo.
-* Animaciones, sonidos y efectos de partículas.
+* Animación del protagonista y los enemigos.
+* Sistemas de partículas de choque, bolas de fuego y lluvia.
+* Inteligencia artificial de los Koopas y los Goombas.
+* Posibilidad de disparar bolas de fuego.
+* Estado del personaje con múltiples vidas.
+* Etiquetas y capas de colisión.
 
 Detalles de la implementación
 -----------------------------
 
-El terreno de juego se ha implementado usando por una parte varias capas de
-_tile maps_ (terreno pisable y no pisable) y por otra sprites con colisionadores
-(bloques, power-ups y personajes). A su vez, los objetos se organizan en
-distintas capas de colisión (Player Dome, Monster Dome y Shared Dome).
+Las partes importantes del nuevo código son las siguientes:
 
-En cuanto a la implementación, los controladores más relevantes són los
-siguientes que pueden encontrarse en el paquete Shared/Controllers.
+* Shared/Controllers/MotionController: Controla el movimiento de los enemigos
+  y las recompensas. Hace que estos se muevan continuamente en una dirección y
+  si chocan con un objeto en su horizontal canvien de dirección.
 
-* InputController - Hace que el personaje se mueva por el campo de juego según
-  las ordenes del usuario. El protagonista puede caminar, correr, saltar o
-  lanzar bolas de ping-pong en llamas.
+* Shared/Controllers/MonsterController: Inteligencia artificial básica de los
+  enemigos junto a Shared/Handlers/Actors/OnMonsterCollision. El comportamiento
+  basico es que los enemigos se muevan en una dirección y cambien de sentido
+  cuando colisionan con un objeto. Si colisionan con el jugador, se comprueba
+  si la colisión ha sido con la cabeza o el cuerpo; si ha sido con la cabeza
+  muere el monstruo, en caso contrario muere el jugador.
 
-* PlayerController - Lógica de estado del personaje, animación de sus
-  movimientos y recolección de power-ups.
+* Shared/Controllers/KoopaController: Inteligencia artificial de los caracoles.
+  Extiende "MonsterController" para añadir la capacidad de que los enemigos de
+  este tipo se escondan en su caparazón cuando el jugador les salta encima. Una
+  vez escondidos en el caparazón pasan a ser artillería del jugador, pues este
+  puede empujarlos y usarlos para matar a otros enemigos.
 
-* MonsterController - Lógica de animación de los enemigos y de su estado. El
-  movimiento de los enemigos se implementa en el controlador MotionController.
+* Shared/Handlers/OnKoopaCollision: Parte de la inteligencia artificial de los
+  caracoles encargada de la gestión de las colisiones. Si el jugador salta
+  encima de un caparazón este empezará a moverse y rebotar por el terreno de
+  juego si estaba parado o se parará si ya estaba moviéndose. Si un caparazón
+  que se encontraba en movimiento choca contra el jugador o un enemigo en su 
+  horizontal estos mueren.
 
-Así mismo, en el paquete Shared/Handlers se implementa la lógica de eventos y
-colisiones del personaje con su entorno. Los más importantes son los siguientes.
+* InputController: El método "ThrowFireball" es el encargado de lanzar la bolas
+  de fuego cuando el protagonista ha ingerido una flor. Las bolas reciben
+  inicialmente una fuerza de empuje proporcional a la velocidad del jugador
+  además de una fuerza de giro. Cuando una bola choca contra un enemigo este
+  muere y la bola desaparece. También desaparece una bola de fuego cuando choca
+  con un objeto del terreno de juego en su horizontal (OnFireballCollision).
 
-* OnMonsterCollision - Cuando el personaje choca con un enemigo, decide si se va
-  a dañar al personaje o al enemigo y en qué grado.
+Por otra parte, los sistemas de partículas implementados son los siguientes:
 
-* OnGiftboxCollision - Si el protagonista choca contra una caja que contiene uno
-  o mas premios activa el siguiente premio en la cola.
+* Partículas de polvo cuando el jugador choca contra algún objeto que le reporta
+  una puntuación. Las partículas de polvo se crean en el método "OnPointsEarned"
+  de la clase "Scenes/Game/ScoreboardController". Este es invocado por la clase
+  "Shared/Handlers/OnRewardCollision" de la que heredan todos los enemigos, los
+  bloques y las recompensas (setas, estrellas y flores).
 
-* OnBrickKeyTrigger - Para activar una caja de premio se delega en esta clase la
-  colisión del personaje con su llave (un colisionador interior de la caja), de
-  manera que sólo se activará si el personaje choca con la caja por debajo y la
-  mueve a cierta altura. La caja contiene además un Spring Joint para devolverla
-  a su lugar después de la colisión.
+* Partículas en forma de rastro (_trail_) cuando se lanza una bola de fuego. Estas
+  siguen a la bola de fuego en su trayectoria.
 
-* OnRewardCollision - La mayoría de bloques contienen premios (monedad, puntos
-  o power-ups). Está clase, de la que derivan todos los premios, es la que los
-  entrega al protagonista guardándolos en su cartera (PlayerWallet).
+* Partículas de estrellas en el personaje. Cuando el protagonista recoge una
+  estrella estas partículas salen del actor mientras el power-up siga activo.
+  Para un efecto más dramático estas partículas se crean en _world-space_
+  de manera que dejan un rastro por dondequiera que el personaje pase.
 
-Para los sonidos se ha creado el servicio Services/AudioService que contiene
-un singleton encargado de reproducirlos en alguno de los múltiples AudioSource
-que contienen los objetos del juego.
+* Partículas de lluvia. Cuando al jugador se le está agotando el tiempo de juego
+  empezará a llover sobre el terreno. Estas partículas de lluvia se han creado
+  como _sprites_ animados de manera que rebotan cuando colisionan con el suelo
+  u otro objeto de la escena. Existe también una segunda capa de lluvia sin
+  colisión como fondo del escenario.
 
-Para poder centralizar los sonidos, estos se configuran en la clase AudioTheme y
-se les asigna un nombre de evento. Luego las clases de Shared/Handlers los
-reproducen pasando un nombre de evento y AudioSource al servicio AudioService.
+Para implementar la inteligencia artificial de los personajes se han usado
+diferentes capas de colisión:
+
+* Player: Etiqueta el jugador que colisiona contra todo excepto el dominio de
+  los monstruos  ("Monster Dome") y las bolas de fuego ("Fireballs").
+
+* Monster: Etiqueta a los enemigos y hace que estos colisionen contra todo
+  excepto el dominio del jugador ("Player Dome").
+
+* Player Dome: Etiqueta para los objectos con los que únicamente puede
+  colisionar el jugador. Se etiquetan con ella las recompensas como son las
+  flores, las setas y las estrellas.
+
+* Monster Dome: Etiqueta para los objectos con los que únicamente pueden
+  colisionar los monstruos. Se etiquetan con ella algunos colisionadores que
+  establecen los límites de los precipicios y de esta manera los enemigos
+  cambiarán de dirección al aproximarse a ellos en lugar de caer al vacío.
+
+* Fireballs: Todas las bolas de fuego tienen esta etiqueta que hace que no
+  colisionen entre ellas ni con el jugador. Tampoco colisionaran con los
+  dominios del jugador y los monstruos.
+
+* Shells: Cuando es activado el caparazón de un caracol esta pasa a ser su
+  capa de colisión. Esto se hace para que el caparazón no colisione con la
+  capa "Monster Dome" y así pueda caer al vacío cuando es impulsado.
+
+La animación de los enemigos y el protagonista se hace con _sprites_. En el caso
+del jugador, el controlador de animación contiene animaciones para caminar,
+correr, saltar, morir, daño al actor y disparar. Los enemigos tienen animaciones
+para caminar y morir. A los Koopa se les ha añadido además una animación para
+esconderse en su caparazón.
 
 La última versión
 -----------------
 
 Puede encontrar información sobre la última versión de este software y su
-desarrollo actual en https://gitlab.com/joansala/uoc-platformer
+desarrollo actual en https://gitlab.com/joansala/uoc-artillery
 
 Referencias
 -----------

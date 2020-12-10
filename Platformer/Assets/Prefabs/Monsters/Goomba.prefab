@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2674613039340183172}
   - component: {fileID: 3920286035037142715}
-  - component: {fileID: 3667870551242193885}
   - component: {fileID: 7553838558571191927}
+  - component: {fileID: 3667870551242193885}
   - component: {fileID: 2674613039340183175}
   - component: {fileID: 5849510571785084434}
   - component: {fileID: 3228088706565165712}
@@ -53,6 +53,22 @@ MonoBehaviour:
   isAlive: 1
   monsterType: Goomba
   damageForce: 600
+--- !u!114 &7553838558571191927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674613039340183173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earnedPoints: 100
+  earnedCoins: 0
+  earnedLifes: 0
+  bounceForce: 1300
 --- !u!114 &3667870551242193885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,21 +87,6 @@ MonoBehaviour:
   minSideAngle: 70
   isFlipped: 0
   impulse: {x: 0, y: 0}
---- !u!114 &7553838558571191927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2674613039340183173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a2a51ff6f38a734a5b50c04fc3e42d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  earnedPoints: 100
-  earnedCoins: 0
-  bounceForce: 1300
 --- !u!212 &2674613039340183175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -152,7 +153,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 0a12a11e9ec2f69cbb03e0bd293129c9, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -202,7 +203,7 @@ AudioSource:
   m_GameObject: {fileID: 2674613039340183173}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 631d10825d7127478adce3ad44f21978, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -213,8 +214,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 15
+  MinDistance: 0.5
+  MaxDistance: 0.51
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -249,7 +250,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

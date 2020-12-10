@@ -45,6 +45,12 @@ namespace Game.Shared {
         /** Wheter the shield power-up is active */
         public bool shieldActive = false;
 
+        /** Push up force when the player is bounced */
+        public float bounceForce = 1300.0f;
+
+        /** Last time a bounce force was added */
+        private float lastBounceTime = 0.0f;
+
         /** Set to true when the player is hurt */
         private bool isHurt = false;
 
@@ -56,18 +62,6 @@ namespace Game.Shared {
 
         /** Sprite renderer of the player */
         private SpriteRenderer actorRenderer;
-
-
-        /**
-         * Obtain references to the required components when the
-         * player is enabled.
-         */
-        protected override void OnEnable() {
-            base.OnEnable();
-            actorRenderer = GetComponent<SpriteRenderer>();
-            input = GetComponent<InputController>();
-            SetIgnoreMonsterCollisions(false);
-        }
 
 
         /**
@@ -94,6 +88,39 @@ namespace Game.Shared {
                 DisableColliders();
                 actorRigidbody.AddForce(input.jumpForce * Vector2.up);
                 wasKilled = true;
+            }
+        }
+
+
+        /**
+         * Obtain references to the required components when the
+         * player is enabled.
+         */
+        protected override void OnEnable() {
+            base.OnEnable();
+            actorRenderer = GetComponent<SpriteRenderer>();
+            input = GetComponent<InputController>();
+            input.fireballThrown += OnFireballThrown;
+            SetIgnoreMonsterCollisions(false);
+        }
+
+
+        /**
+         * Animate the character when a fireball is thrown.
+         */
+        private void OnFireballThrown() {
+            actorAnimator.SetTrigger("shoot");
+        }
+
+
+        /**
+         * Adds a force that moves the player up to simulate the player
+         * bouncing when a collision against something happens.
+         */
+        public void BounceUp() {
+            if (Time.fixedTime - lastBounceTime > 0.2f) {
+                actorRigidbody.AddForce(bounceForce * Vector2.up);
+                lastBounceTime = Time.fixedTime;
             }
         }
 
@@ -157,6 +184,20 @@ namespace Game.Shared {
 
 
         /**
+         * Resurrects this player.
+         */
+        public void Resurrect() {
+            isAlive = true;
+            isHurt = false;
+            wasKilled = false;
+            input.enabled = true;
+            EnableColliders();
+            DeactivateAllPowers();
+            ActivateShieldPowers();
+        }
+
+
+        /**
          * {inheritDoc}
          */
         public override void Damage() {
@@ -180,20 +221,6 @@ namespace Game.Shared {
                 input.enabled = false;
                 playerDied.Invoke();
             }
-        }
-
-
-        /**
-         * Resurrects this player.
-         */
-        public void Resurrect() {
-            isAlive = true;
-            isHurt = false;
-            wasKilled = false;
-            input.enabled = true;
-            EnableColliders();
-            DeactivateAllPowers();
-            ActivateShieldPowers();
         }
 
 
@@ -265,7 +292,10 @@ namespace Game.Shared {
         private void SetIgnoreMonsterCollisions(bool ignore) {
             int players = LayerMask.NameToLayer("Player");
             int monsters = LayerMask.NameToLayer("Monster");
+            int shells = LayerMask.NameToLayer("Shells");
+
             Physics2D.IgnoreLayerCollision(players, monsters, ignore);
+            Physics2D.IgnoreLayerCollision(players, shells, ignore);
         }
     }
 }

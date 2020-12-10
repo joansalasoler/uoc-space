@@ -17,6 +17,9 @@ namespace Game.Shared {
         /** Motion controller for the monster */
         protected MotionController motionController;
 
+        /** If the monster was activated */
+        protected bool wasActivated = false;
+
 
         /**
          * Obtain references to the required components.
@@ -54,9 +57,26 @@ namespace Game.Shared {
 
 
         /**
+         * Handle collisions with the monster's head.
+         */
+        public virtual void OnHeadCollision() {
+            this.Kill();
+        }
+
+
+        /**
+         * Enable this monster's movement.
+         */
+        protected void EnableMotion() {
+            motionController.enabled = true;
+            motionController.StartMoving();
+        }
+
+
+        /**
          * Stop the monster and disable its movement.
          */
-        private void DisableMotion() {
+        protected void DisableMotion() {
             if (motionController.enabled) {
                 motionController.enabled = false;
                 motionController.StopMoving();
@@ -67,7 +87,7 @@ namespace Game.Shared {
         /**
          * Adds a force to the monster when it is damaged.
          */
-        private void AddDamageForce() {
+        protected void AddDamageForce() {
             float direction = .5f * motionController.direction;
             Vector2 force = new Vector2(direction, 1.0f);
             actorRigidbody.AddForce(damageForce * force);
@@ -77,9 +97,10 @@ namespace Game.Shared {
         /**
          * Activate the motion controller when visible.
          */
-        private void OnBecameVisible() {
-            if (this.isAlive == true) {
-                motionController.enabled = true;
+        protected void OnBecameVisible() {
+            if (!wasActivated && isAlive) {
+                wasActivated = true;
+                EnableMotion();
             }
         }
 
@@ -87,7 +108,7 @@ namespace Game.Shared {
         /**
          * Disable the monster if it is dead.
          */
-        private void OnBecameInvisible() {
+        protected void OnBecameInvisible() {
             if (this.isAlive == false) {
                 Destroy(gameObject);
             }

@@ -64,6 +64,7 @@ MonoBehaviour:
   flowerActive: 0
   mushroomActive: 0
   shieldActive: 0
+  bounceForce: 1300
 --- !u!114 &3860911725121537787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ AudioSource:
   m_GameObject: {fileID: 3860911725121537780}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4102783951845793074, guid: 631d10825d7127478adce3ad44f21978, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

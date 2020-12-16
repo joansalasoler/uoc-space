@@ -282,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264774996f9f38c1ba4e0a1c5ff080a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferences: {fileID: 858750887}
   parameter: music.volume
 --- !u!114 &177734671
 MonoBehaviour:
@@ -670,7 +669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e04fcce45cc0f022874263988010c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferences: {fileID: 858750887}
 --- !u!114 &350726677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,7 +1213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086a248cd5bb3d79abc3b6c8dd2628e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferences: {fileID: 858750887}
 --- !u!1 &1181260730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,7 +1448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932a6e9f85e59cee1be60593f73a029b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferences: {fileID: 858750887}
 --- !u!1001 &1378406822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1611,7 +1607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264774996f9f38c1ba4e0a1c5ff080a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preferences: {fileID: 858750887}
   parameter: effects.volume
 --- !u!114 &1378406826
 MonoBehaviour:
